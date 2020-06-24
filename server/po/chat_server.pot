@@ -1,0 +1,431 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2004-02-09 14:12+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/auto_commands.c:76
+#, c-format
+msgid "Error: invalid AutoLevel parameter (%s)\n"
+msgstr ""
+
+#: src/auto_commands.c:199
+#, c-format
+msgid "Error: invalid ReserveNick parameter (%s)\n"
+msgstr ""
+
+#: src/chat_server.c:128
+msgid ""
+"Chat Everywhere, copyright(C)2000-2004, A. de Bernis <alexis@bernis.org>\n"
+msgstr ""
+
+#: src/chat_server.c:129
+#, c-format
+msgid "Version %s, released %s\n"
+msgstr ""
+
+#: src/chat_server.c:134
+#, c-format
+msgid ""
+"Usage : %s [Options]\n"
+"\n"
+msgstr ""
+
+#: src/chat_server.c:136
+msgid "-b --background\t run the server into the background\n"
+msgstr ""
+
+#: src/chat_server.c:138
+msgid "-c --config file specifies an alternate config file\n"
+msgstr ""
+
+#: src/chat_server.c:140 src/chat_server.c:146
+#, c-format
+msgid "\t\t default is %s\n"
+msgstr ""
+
+#: src/chat_server.c:143
+msgid "-h --help\t print this help\n"
+msgstr ""
+
+#: src/chat_server.c:145
+msgid ""
+"-l --log file\t specifies an alternate logging file (overrides config file)\n"
+msgstr ""
+
+#: src/chat_server.c:148
+msgid "-p --port num\t specifies the port to bind to (overrides config file)\n"
+msgstr ""
+
+#: src/chat_server.c:150
+msgid "-v --version\t print version informations\n"
+msgstr ""
+
+#: src/chat_server.c:233
+msgid ""
+"Error: failed to open or to create logging file,logging directed to stderr\n"
+msgstr ""
+
+#: src/chat_server.c:251
+#, c-format
+msgid "Fatal error : cannot open passive socket on port %d"
+msgstr ""
+
+#: src/chat_server.c:255
+#, c-format
+msgid "Starting chat server on port %d"
+msgstr ""
+
+#: src/chat_server.c:312
+#, c-format
+msgid "Error : received buffer overflowed by %s\n"
+msgstr ""
+
+#: src/chat_server.c:398
+msgid "SIGHUP received, reading config file again"
+msgstr ""
+
+#: src/chat_server.c:415
+#, c-format
+msgid "Terminating at user request (SIGINT), uptime %s"
+msgstr ""
+
+#: src/chat_server.c:417
+msgid "Terminating at user request (SIGINT)"
+msgstr ""
+
+#: src/chat_server.c:440
+#, c-format
+msgid "Terminating at system request (SIGTERM), uptime %s"
+msgstr ""
+
+#: src/chat_server.c:442
+msgid "Terminating at system request (SIGTERM)"
+msgstr ""
+
+#: src/chat_server.c:690
+msgid "Error in accept(), maybe a SYN scan"
+msgstr ""
+
+#. Log the connection attempt
+#: src/chat_server.c:698
+#, c-format
+msgid "Connection from %s"
+msgstr ""
+
+#: src/chat_server.c:702
+#, c-format
+msgid "Connection attempt from %s denied"
+msgstr ""
+
+#: src/chat_server.c:837
+#, c-format
+msgid "Main process started with pid %d"
+msgstr ""
+
+#: src/commands.c:166
+#, c-format
+msgid "Parse error : unknown command %s"
+msgstr ""
+
+#. FIXME : config value pour max number de failures
+#: src/command_auth.c:61
+#, c-format
+msgid "user %s tried to authenticate with a bad password"
+msgstr ""
+
+#: src/command_ban.c:102
+#, c-format
+msgid "%s tried to ban %s with an inferior or equal level"
+msgstr ""
+
+#: src/command_ban.c:121
+#, c-format
+msgid "%s upgrades ban of %s to level %d"
+msgstr ""
+
+#: src/command_ban.c:163
+#, c-format
+msgid "%s has been banned by %s (%d)"
+msgstr ""
+
+#. the ban has expired : let's remove it
+#: src/command_ban.c:238
+#, c-format
+msgid "The ban of %s is over"
+msgstr ""
+
+#: src/command_gag.c:117
+#, c-format
+msgid "%s(%d) tried to gag %s(%d) with an inferior or equal level"
+msgstr ""
+
+#: src/command_gag.c:136
+#, c-format
+msgid "%s upgrades gag of %s to level %d"
+msgstr ""
+
+#: src/command_gag.c:163
+#, c-format
+msgid "%s has been gagged by %s(%d)"
+msgstr ""
+
+#: src/command_gag.c:221
+#, c-format
+msgid "%s(%d) tried to ungag %s (gag level %d)"
+msgstr ""
+
+#: src/command_gag.c:234
+#, c-format
+msgid "%s has been successfully ungagged by %s"
+msgstr ""
+
+#. the gag has expired : let's remove it
+#: src/command_gag.c:305
+#, c-format
+msgid "The gag of %s is over"
+msgstr ""
+
+#: src/command_ignore.c:103
+#, c-format
+msgid "%s now ignore %s"
+msgstr ""
+
+#: src/command_kick.c:71
+#, c-format
+msgid "%s tried to kick %s with an inferior level"
+msgstr ""
+
+#. Ok, proceed with the kick
+#: src/command_kick.c:81
+#, c-format
+msgid "%s has been kicked by %s (%s)"
+msgstr ""
+
+#: src/command_login.c:65
+#, c-format
+msgid "Login from %s failed : Invalid login attempt (%s)"
+msgstr ""
+
+#: src/command_login.c:78
+#, c-format
+msgid "Login from %s failed : empty nick"
+msgstr ""
+
+#: src/command_login.c:84
+#, c-format
+msgid "Login from %s failed : nick is too long (%s)"
+msgstr ""
+
+#: src/command_login.c:89
+#, c-format
+msgid "Login from %s failed : nick is invalid (%s)"
+msgstr ""
+
+#: src/command_login.c:97
+#, c-format
+msgid "Login from %s@%s failed : max users limit reached"
+msgstr ""
+
+#: src/command_login.c:108
+#, c-format
+msgid "Login from %s@%s failed : maximum number of connections was reached"
+msgstr ""
+
+#: src/command_login.c:117
+#, c-format
+msgid "Login from %s@%s failed : nick was registered"
+msgstr ""
+
+#: src/command_login.c:128
+#, c-format
+msgid "Login from %s@%s failed : nick in use"
+msgstr ""
+
+#: src/command_login.c:141
+#, c-format
+msgid "Login from %s@%s failed : banned but tried to join (as %s)"
+msgstr ""
+
+#. Further auth required, we stand by here
+#: src/command_login.c:152
+#, c-format
+msgid "asked a password for user %s@%s"
+msgstr ""
+
+#: src/command_login.c:158
+#, c-format
+msgid "Login from %s@%s failed : guest login not allowed"
+msgstr ""
+
+#: src/command_login.c:191
+#, c-format
+msgid "%s matches a previous gag, applied again"
+msgstr ""
+
+#: src/command_login.c:199
+#, c-format
+msgid "Login successful from %s@%s"
+msgstr ""
+
+#: src/command_login.c:200
+#, c-format
+msgid "*** %s joined the chat"
+msgstr ""
+
+#: src/command_op.c:69
+#, c-format
+msgid "%s tried to op with a bad password"
+msgstr ""
+
+#: src/command_op.c:78
+#, c-format
+msgid "%s gained level 9"
+msgstr ""
+
+#: src/command_setlevel.c:78
+#, c-format
+msgid "%s tried to access level %d"
+msgstr ""
+
+#: src/command_setlevel.c:93
+#, c-format
+msgid "%s downed himself to level %d"
+msgstr ""
+
+#: src/command_setlevel.c:132
+#, c-format
+msgid "%s has been increased to level %d by %s"
+msgstr ""
+
+#: src/command_stats.c:69
+#, c-format
+msgid "%s tried to view the server stats with a bad level (%d < %d)"
+msgstr ""
+
+#: src/command_stats.c:84
+#, c-format
+msgid "%s requested server stats successfully."
+msgstr ""
+
+#: src/command_stats.c:114
+#, c-format
+msgid "%s tried to view the user stats of %s with a bad level (%d < %d)"
+msgstr ""
+
+#: src/command_talk.c:57
+#, c-format
+msgid "Invalid TALK message : %s"
+msgstr ""
+
+#: src/command_unban.c:69
+#, c-format
+msgid "%s tried to unban %s"
+msgstr ""
+
+#: src/command_unban.c:77
+#, c-format
+msgid "%s has been successfully unbanned by %s"
+msgstr ""
+
+#: src/command_unignore.c:90
+#, c-format
+msgid "%s does not ignore %s anymore"
+msgstr ""
+
+#: src/command_usersinfo.c:56
+#, c-format
+msgid "%s tried to use USERSINFO with a bad level (%d < %d)"
+msgstr ""
+
+#: src/config_file.c:145
+msgid "Error : no config file found, default values will be used.\n"
+msgstr ""
+
+#: src/config_file.c:173
+#, c-format
+msgid "Error line %u : Last line of the config file is finishing by '\\'\n"
+msgstr ""
+
+#: src/config_file.c:204
+#, c-format
+msgid "Error: directive \"%s\" unknown (line %d)\n"
+msgstr ""
+
+#: src/mem_utils.c:40
+msgid "Error : no more memory\n"
+msgstr ""
+
+#: src/mem_utils.c:49
+#, c-format
+msgid "Successfully allocated %u bytes (total is now : %u)\n"
+msgstr ""
+
+#: src/mem_utils.c:64
+msgid "Warning : efree(NULL) called"
+msgstr ""
+
+#: src/mem_utils.c:76
+#, c-format
+msgid "Successfully freed %u bytes (total is now : %u)\n"
+msgstr ""
+
+#: src/mem_utils.c:104
+#, c-format
+msgid "Successfully reallocated %u to %u bytes (total is now : %u)"
+msgstr ""
+
+#: src/net_utils.c:177
+msgid ""
+"Error : local host name is too long, increase the value of "
+"MAX_INET_NAME_LENGTH in server_config.h"
+msgstr ""
+
+#: src/password_auth.c:183
+#, c-format
+msgid "Warning: no initial level specified for %s in password file (line %d)\n"
+msgstr ""
+
+#: src/password_auth.c:194
+#, c-format
+msgid "Warning: syntax error in password file line %d\n"
+msgstr ""
+
+#: src/restrict_command.c:121
+#, c-format
+msgid "Error : unknown command %s in the RestrictCommand directive\n"
+msgstr ""
+
+#: src/statistics.c:78
+msgid "Parse error in config file, Statistics value is not recognized\n"
+msgstr ""
+
+#: src/statistics.c:79
+msgid "Statistics are disabled\n"
+msgstr ""
+
+#: src/users.c:150
+#, c-format
+msgid "User %s has quit (%s)"
+msgstr ""
+
+#: src/users.c:151
+#, c-format
+msgid "*** %s has quit (%s)"
+msgstr ""
+
+#: src/users.c:168
+#, c-format
+msgid "Deconnecting %s"
+msgstr ""

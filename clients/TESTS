@@ -1,0 +1,135 @@
+====================================================
+====================================================
+==== ChatEverywhere clients compatibility tests ====
+====================================================
+====================================================
+
+
+25/04/2003 : latest CVS version (0.0.16a-cvsdevel2) in Media Union
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+o Compiler 
+java version "1.3.1_05"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.3.1_05-b02)
+Java HotSpot(TM) Client VM (build 1.3.1_05-b02, mixed mode)
+
+o Client computer
+MS-Windows XP Professional (5.1)
+MS-Internet Explorer 6.0.2600
+JVM Java Plugin version 1.4.0_01
+
+o Test of signed awt applet
+ login screen :         OK*
+ login by Go button :   OK
+ login by Enter :       OK
+ chat textfield :       OK
+ option menu :          OK
+ bip on new text :      OK
+ bip as sound file :    OK
+ notification window:   OK
+ private msgs :         OK
+ new msg notification : OK
+ password auth :        OK
+ font change :          OK
+ contextual menu :      OK
+
+ Comments : repaint() problems, the mouse needs to hover to paint the window
+
+
+o Test of signed Swing applet
+ login screen :         OK
+ login by Go button :   OK
+ login by Enter :       OK
+ chat textfield :       OK
+ option menu :          OK
+ bip on new text :      OK
+ bip as sound file :    OK
+ notification window:   OK*
+ private msgs :         OK
+ new msg notification : OK
+ password auth :        OK
+ font change :          OK
+ contextual menu :      OK
+
+ Comments : the notification window does not take the correct fg/bg colors
+            (update : that was a bug, fixed)
+== Test successful ==
+
+
+
+
+25/04/2003 : latest CVS version (0.0.16a-cvsdevel2) on caen-ntts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+o Compiler 
+java version "1.3.1_05"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.3.1_05-b02)
+Java HotSpot(TM) Client VM (build 1.3.1_05-b02, mixed mode)
+
+o Client computer
+MS-Windows 2000 (5.0 Service Pack 3)
+MS-Internet Explorer 6.0.2800 SP1
+JVM Microsoft (version unknown)
+
+o Test of signed awt applet
+ login screen :         OK
+ login by Go button :   OK
+ login by Enter :       OK
+ chat textfield :       OK
+ option menu :          FAILED
+ bip on new text :      NO OPTIONS
+ bip as sound file :    NO OPTIONS
+ notification window:   NO OPTIONS
+ private msgs :         OK*
+ new msg notification : FAILED
+ password auth :        FAILED
+ font change :          OK
+ contextual menu :      OK
+
+ Comments : code to center windows appears inefficient
+
+
+o Test of signed Swing applet
+ FAILED : Swing is not supported by Microsoft JVM
+
+
+== Test OK but a lot of functions are disabled ==
+
+
+
+
+25/04/2003 : latest CVS version (0.0.16a-cvsdevel2) on Toma's PC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+o Compiler 
+java version "1.3.1_05"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.3.1_05-b02)
+Java HotSpot(TM) Client VM (build 1.3.1_05-b02, mixed mode)
+
+o Client computer
+MS-Windows XP (5.1 Service Pack 1)
+MS-Internet Explorer 6.0.2800 SP1
+JVM Microsoft (version unknown)
+
+o Test of signed awt applet
+ login screen :         OK
+ login by Go button :   OK
+ login by Enter :       OK
+ chat textfield :       OK
+ option menu :          FAILED
+ bip on new text :      NO OPTIONS
+ bip as sound file :    NO OPTIONS
+ notification window:   NO OPTIONS
+ private msgs :         ?
+ new msg notification : ?
+ password auth :        ?
+ font change :          ?
+ contextual menu :      ?
+
+o Test of signed Swing applet
+ FAILED : Swing is not supported by Microsoft JVM
+
+
+== Test OK but a lot of functions are disabled ==
+
+

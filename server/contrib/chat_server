@@ -1,0 +1,74 @@
+#!/bin/bash
+#
+# chat_server          Chat Everywhere control script.
+#
+# chkconfig: 345 55 45
+# description: Chat everywhere server
+#
+# Released under GPL
+# Created by Carlos Saltos <csaltos@yahoo.com>
+#
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+[ -f /etc/chat/chat.conf ] || exit 0
+
+ROOTDIR=/usr/local/sbin
+
+start() {
+        # Start chat server
+        gprintf "Starting chat everywhere: "
+        daemon ${ROOTDIR}/chat_server -c /etc/chat/chat.conf -b
+	RETVAL=$?
+ 	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/chat_server
+	echo
+	return $RETVAL
+}
+stop() {
+        # Stop daemons.
+        gprintf "Stopping chat everywhere: "
+        killproc chat_server
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/chat_server
+        echo
+	return $RETVAL
+}
+
+restart() {
+	stop
+	start
+}
+
+reload() {
+	# FIXME: send the correct signal to the daemon to reload the configuration
+	gprintf "Reloading chat everywhere: "
+	killproc chat_server -SIGHUP
+	gprintf "\n"
+	RETVAL=$?
+	return $RETVAL
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	status)
+		status chat_server
+		;;
+	restart)
+		restart
+		;;
+	reload)
+		reload
+		;;
+	*)
+        	gprintf "Usage: %s {start|stop|status|restart|reload}\n" $0
+		exit 1
+esac
+
+exit $?
+

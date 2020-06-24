@@ -1,0 +1,30 @@
+<html>
+ <head>
+  <script language="JavaScript" type="text/javascript">
+  <!--
+
+    function load_applet()
+	{
+	var nick = document.chat_entrance.nick.value;
+	if(!nick)
+	    {
+	    alert("Please enter your nick first.");
+	    return;
+	    }
+	document.write("<h2>Chat - " + nick + "</h2>");
+        document.write("<applet archive=\"ChatEverywhere-swing.jar\" code=\"Chat.class\" width=\"600\" height=\"400\">");
+        document.write(" <param name=\"Nick\" value=\"" + nick + "\"/>");
+        document.write(" <param name=\"ServerPort\" value=\"5656\"/>");
+        document.write("</applet>");
+	}
+
+  // -->
+  </script>
+ </head>
+ <body>
+  <form name="chat_entrance">
+   <input name="nick"/>
+   <input onclick="load_applet()" type="button" value="Enter"/>
+  </form>
+ </body>
+</html>

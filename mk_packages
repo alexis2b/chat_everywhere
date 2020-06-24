@@ -1,0 +1,33 @@
+#!/bin/sh
+# Automagically generate the packages
+# in order to upload a new release
+#
+# Results are in /tmp/release
+#
+# DO NOT RUN THIS SCRIPT AS ROOT
+#
+# copyright(c) 2001-2004, A. de Bernis <alexis@bernis.org>
+#
+
+CUR_PATH=`pwd`
+
+# Initialize the directories
+rm -rf /tmp/release
+mkdir /tmp/release
+
+# Starts by the server package
+cd server && ./mkrel
+
+# Next : the java client
+cd ${CUR_PATH}
+cd clients/java-applet/maintainer && ./mkrel
+
+# Next : the Swing client
+cd ${CUR_PATH}
+cd clients/swing-applet/maintainer && ./mkrel
+
+# Makes the final package to uncompress
+cd /tmp/release
+tar -zcvf release.tar.gz README CHANGES.server CHANGES.client-java \
+CHANGES.client-swing *.tar.gz *.tar.bz2
+cd ${CUR_PATH}

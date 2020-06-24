@@ -1,0 +1,73 @@
+Special notes about chat_server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  These are the steps required to install chat_server on your system. No
+special libs are required but includes may vary from one Unix to another.
+
+  You need admin rights to install chat_server in its default location
+(binary in /usr/local/sbin, config file in /usr/local/etc and man page in
+/usr/local/man). But you may use the --prefix option of the configure script
+to install it to another location. No special rights are required to run
+chat_server (unless you specify a port number < 1024).
+
+  The following platforms are officially supported :
+
+    o= Linux
+    o= FreeBSD
+    o= Solaris
+	o= HP-UX
+	o= MacOS X (Darwin)
+
+  Please tell me about any platform specifics bugs so as to extend this list
+(see the BUGS file).
+
+
+Step-by-step installation guide :
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+1). Check src/server_config.h for default values you would like to change,
+
+2). Run the configure script :
+      ./configure
+    This will try to detect your configuration automagically.
+    Note : you can use --disable-i18n to disable the use of gettext which
+    allows translated messages from the server.
+
+3). When it is done, build chat_server with
+      make
+    If you see any compilation error at this point, report them with all the
+    output of the compiler (see the BUGS file).
+
+4). Once the compilation is over, you may install the package (you may need root
+    if you want to install it in a generic location) :
+      make install
+    This will copy the package files in various locations (note : you can
+    modify this with the --prefix option in step 2).
+	If you don't want that, you can copy manually the chat_server file from
+	the sbin/ directory into a convenient one (take also the sample chat.conf
+	and chat.motd files).
+
+5). Edit the sample chat.conf file (by default in /usr/local/etc) to fit
+    your needs. You may also edit the sample chat.motd (Mot Of The Day).
+
+6). Install the java client in your web tree (detailed instructions are given
+    in the INSTALL file of the client).
+
+7). You may now launch the server. Use the given man page (man chat_everywhere)
+    to figure out all the availables command line options (especially the
+    --config-file one, depending on where you have put your chat.conf file).
+    ex : /usr/local/sbin/chat_server --config-file=/etc/chat.conf --background
+
+8). Run your favorite java-enabled web browser, point it toward the location
+    of your web page.
+
+9). enjoy.
+
+Report any bug to A. de Bernis <alexis@bernis.org>
+
+
+Note : you may want to make it run automatically at each boot. Depending
+on your system, you may have to add a line in your startup scripts (/etc/rc.d
+in the BSDish style) or make a simple SysV script (for RedHat based distribs)
+(one should be included soon).

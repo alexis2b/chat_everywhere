@@ -1,0 +1,30 @@
+# List of source files containing translatable strings
+# Copyright (c) 2001-2004, A. de Bernis <alexis@bernis.org>
+
+
+# Package source files
+src/auto_commands.c
+src/chat_server.c
+src/commands.c
+src/command_auth.c
+src/command_ban.c
+src/command_capabilities.c
+src/command_gag.c
+src/command_ignore.c
+src/command_kick.c
+src/command_login.c
+src/command_op.c
+src/command_quit.c
+src/command_setlevel.c
+src/command_stats.c
+src/command_talk.c
+src/command_unban.c
+src/command_unignore.c
+src/command_usersinfo.c
+src/config_file.c
+src/mem_utils.c
+src/net_utils.c
+src/password_auth.c
+src/restrict_command.c
+src/statistics.c
+src/users.c

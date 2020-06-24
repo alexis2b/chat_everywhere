@@ -1,0 +1,89 @@
+/* src/config.h.in.  Generated automatically from config.in by autoheader.  */
+
+/* == Some configure-defined stuff that we can adjust later on == */
+/* Compiler-related stuff */
+/* Define to empty if the keyword does not work.  */
+#undef const
+
+
+/* Functions-related stuff */
+/* Define if you have the vprintf function.  */
+#undef HAVE_VPRINTF
+/* Define if you don't have vprintf but do have _doprnt.  */
+#undef HAVE_DOPRNT
+/* Define if you have <sys/wait.h> that is POSIX.1 compatible.  */
+#undef HAVE_SYS_WAIT_H
+/* Define if you have the wait3 system call.  */
+#undef HAVE_WAIT3
+/* Define as the return type of signal handlers (int or void).  */
+#undef RETSIGTYPE
+/* Define if you have the gethostname function.  */
+#undef HAVE_GETHOSTNAME
+/* Define if you have the getopt_long function.  */
+#undef HAVE_GETOPT_LONG
+/* Define if you have the select function.  */
+#undef HAVE_SELECT
+/* Define if you have the snprintf function.  */
+#undef HAVE_SNPRINTF
+/* Define if you have the socket function.  */
+#undef HAVE_SOCKET
+/* Define if you have the strcasecmp function.  */
+#undef HAVE_STRCASECMP
+/* Define if you have the strncasecmp function.  */
+#undef HAVE_STRNCASECMP
+/* Define if you have the strstr function.  */
+#undef HAVE_STRSTR
+/* Define if you have the strchr function. */
+#undef HAVE_STRCHR
+
+
+/* Headers-related stuff */
+/* Define if you have the ANSI C header files.  */
+#undef STDC_HEADERS
+/* Define if you can safely include both <sys/time.h> and <time.h>.  */
+#undef TIME_WITH_SYS_TIME
+/* Define if your <sys/time.h> declares struct tm.  */
+#undef TM_IN_SYS_TIME
+/* Define if you have the <arpa/inet.h> header file.  */
+#undef HAVE_ARPA_INET_H
+/* Define if you have the <getopt.h> header file.  */
+#undef HAVE_GETOPT_H
+/* Define if you have the <signal.h> header file.  */
+#undef HAVE_SIGNAL_H
+/* Define if you have the <sys/socket.h> header file.  */
+#undef HAVE_SYS_SOCKET_H
+/* Define if you have the <sys/stat.h> header file.  */
+#undef HAVE_SYS_STAT_H
+/* Define if you have the <sys/types.h> header file.  */
+#undef HAVE_SYS_TYPES_H
+/* Define if you have the <sys/wait.h> header file.  */
+#undef HAVE_SYS_WAIT_H
+/* Define if you have the <unistd.h> header file.  */
+#undef HAVE_UNISTD_H
+/* Define if you have the alloca function */
+#undef HAVE_ALLOCA
+/* Define if you have the stpcpy function */
+#undef HAVE_STPCPY
+/* Define if you have the mempcpy function */
+#undef HAVE_MEMPCPY
+/* Define if you have the getcwd function */
+#undef HAVE_GETCWD
+
+/* Various defines */
+/* Define to `unsigned' if <sys/types.h> doesn't define.  */
+#undef size_t
+/* Define to `int' if not defined */
+#undef pid_t
+/* Define if the type socklen_t is defined */
+#undef HAVE_SOCKLEN_T
+
+
+/* Define if NLS is requested or not */
+#undef ENABLE_NLS
+
+
+/* Package version and release date */
+#undef PACKAGE
+#undef CHAT_SERVER_VERSION
+#undef CHAT_SERVER_RELEASE
+

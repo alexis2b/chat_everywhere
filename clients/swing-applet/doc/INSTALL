@@ -1,0 +1,94 @@
+
+							Chat Everywhere
+								Swing client applet
+
+
+	These files are the Swing applet for the chat server.  Please read the
+COMPATIBILITY file to check that your users can use this applet. To install
+this applet in you web site, follow these steps :
+
+  First, move the following files to your web tree, (preferably) in the
+directory of the discussion web page :
+	- build/ChatEverywhere-swing.jar             (not signed)
+	- build/ChatEverywhere-swing-signed-sun.jar  (Java plugin signed client)
+
+    You need a signed applet only if you can not run the chat_server daemon
+on the webserver, and the applet needs to connect on another host (which is
+forbidden for defaults unsigned applets).
+    Let me repeat that once again : if you can run the chat_server on the
+webserver, you don't need to mess with the signed applets !
+
+  Then, you may either copy one of the given html file in your web-tree, or add
+some HTML code into an existing web page to add the applet in it. The sample
+files described here can be found in the sample/ directory of the source tree.
+
+  The chat-swing.html one is a "default that works well with me" set of
+parameters, you may try that one, before going farther.
+
+  The chat-swing.color.html is just a demonstration of the configurability
+of the applet colors (aesthetic not guaranteed :-)
+
+  The chat-swing-signed.html is a demonstration of using Sun signed
+applets in a webpage.
+
+	In the contrib/ subdirectory, there are three ways of generating a dynamic
+web page: the user is no more required to type in a nick, this one could
+be passed as a parameter to the java applet.
+
+
+	If you want to integrate the applet in a web page, you need at least
+the following lines :
+
+<APPLET ARCHIVE="ChatEverywhere-swing.jar" CODE="Chat.class" WIDTH=600 HEIGHT=400>
+</APPLET>
+
+Note : - you may change the width and height parameters as desired
+       - change the .jar file if you need to use a signed applet
+
+	The applet accept some parameters. These are given as :
+		<PARAM NAME="foo" VALUE="bar"> in the <applet ...> </applet> tag.
+See the included sample files for example.
+
+The parameters that the applet understand are :
+	
+	ServerPort		the port on which the applet should try to connect
+					default is 5656 (the server default).
+
+    ServerHost      host on which to connect to if its not the server who sent
+                    the page (this require a signed applet).
+
+	BgColor			Background color for the applet (ex : #FFFFFF is white)
+	
+	FgColor			Foreground (text) color for the applet
+	
+	UsersBgColor	Colors for the users zone (where the nicks are displayed)
+	UsersFgColor
+	
+	TextBgColor		Colors for the discussion zone
+	TextFgColor
+	
+	InputBgColor	Colors for the input zone (where you type in your text)
+	InputFgColor
+	
+	LoginBgColor    Colors for the login zone (where the user first enters
+	LoginFgColor    its desired nick).
+
+	Nick			If this parameter is present, the applet will skip the
+					demand for a nick and try to login with the one given.
+					This is for using with the dynamically generated html files.
+
+	UIFontName      Usually you don't have to mess with these parameter. But people
+	TxtFontName     using encoding other than ISO-8859-1 (for example, russian or
+	                polonese people) will need that to display their special
+	                characters. UIFont is used for the user interface components
+	                whereas TxtFont is used for the text areas of the applet.
+
+	Language        Again, this is for people having troubles setting their locales
+	Country         on their system. But it will be supported later as a way to have
+	                translated messaged. (ex. to set locale fr_FR, set Language=fr
+	                and Country=FR).
+
+	If you have any problem/comment/suggestion, mail me at <alexis@bernis.org>
+	
+	
+												-- Alexis

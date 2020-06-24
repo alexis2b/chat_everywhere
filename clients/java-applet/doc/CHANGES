@@ -1,0 +1,148 @@
+
+Changes since last release :
+
+dd/mm/yyyy, author : comment
+
+
+
+10/02/2005, A. de Bernis : added Danish translation (thanks T. Iversen)
+
+
+===   Chat Everywhere 1.0.0 released ======================
+
+10/10/2003, A. de Bernis : added a "StartChatWith" applet parameter to
+                           automatically start a private chat upon login
+                           (thanks to djlyon for the idea!)
+
+07/10/2003, A. de Bernis : added a Catalan translation
+                           (thanks to Alfons!)
+
+06/10/2003, A. de Bernis : added a Spanish translation (thanks Carlos!)
+
+
+===   Chat Everywhere 0.0.17a released ====================
+
+===   Chat Everywhere 0.0.16a released ====================
+
+14/05/2003, A. de Bernis : various compatibility fixes for MS JVM :
+            A. de Bernis : window centering, option menu, MD5 password
+
+13/05/2003, A. de Bernis : option menu should now work with MS JVM
+
+27/04/2003, A. de Bernis : corrected a typo in chat.color.html
+
+25/04/2003, A. de Bernis : password auth dialog appears centered
+
+24/04/2003, A. de Bernis : private chat window appears centered
+
+23/04/2003, A. de Bernis : new connection notification dialog is centered
+            A. de Bernis : added new option : play bip as sound file
+
+
+===   Chat Everywhere 0.0.15a released ====================
+
+12/02/2003, A. de Bernis : added option menu
+            A. de Bernis : added new option for connection notification
+            A. de Bernis : added new option for bip on new text line
+            A. de Bernis : added new option : auto-scrolling
+
+10/02/2003, A. de Bernis : added new connection notification dialog
+
+04/02/2003, A. de Bernis : added Russian Messages classes (ru, ru_RU)
+
+31/01/2003, A. de Bernis : added Message classes for en, en_US and en_GB
+            A. de Bernis : fixed some deprecation warnings (target is now Java 1.1)
+            A. de Bernis : redesigned the root Makefile to be more efficient
+            A. de Bernis : pressing escape in private window closes it
+            A. de Bernis : redesigned the way popup menu is handled
+
+30/01/2003, A. de Bernis : converted the property files to class files
+            A. de Bernis : partially moved copyright years to 2003
+            A. de Bernis : fixed the scripts to reflect the changes
+
+26/12/2002, A. de Bernis : modified some scripts to fit the new src tree
+            A. de Bernis : fixed some crash in the applet viewer
+
+21/12/2002, A. de Bernis : finished password auth module
+
+20/12/2002, A. de Bernis : first implementation of the password auth
+            A. de Bernis : modified the properties to integrate the new strings
+            A. de Bernis : added new class MD5
+            A. de Bernis : added new class InputDialog
+
+16/12/2002, A. de Bernis : modified the tree of the client
+            A. de Bernis : redesigned the Makefile
+            A. de Bernis : redesigned the release script
+
+
+===   Chat Everywhere 0.0.14a released ====================
+
+11/12/2002, A. de Bernis : added return of server data to PONG
+
+21/10/2002, A. de Bernis : added polish translation
+            A. de Bernis : added czech translation
+            A. de Bernis : added Unicode-encoded translations
+            A. de Bernis : updated Makefile to automatize conversion
+
+20/10/2002, A. de Bernis : localized the applet through ResourceBundle
+            A. de Bernis : added french translation
+            A. de Bernis : corrected Nick parameter (was crashing at startup)
+            A. de Bernis : added german translation from J.Schabetsberger
+
+
+===   Chat Everywhere 0.0.13a released ====================
+
+19/10/2002, A. de Bernis : documentation updated (new parameters)
+            A. de Bernis : contrib files updated
+
+18/10/2002, A. de Bernis : added the commands in the input stack (was a bug)
+            A. de Bernis : corrected setCaretPosition (fix a bug in win32 jre)
+            A. de Bernis : more UI fixes
+            A. de Bernis : quit message in private windows
+            A. de Bernis : disable user input after quit
+
+17/10/2002, A. de Bernis : corrected IE perms bugged by code reorganisation
+            A. de Bernis : took input stack management in another class
+            A. de Bernis : added input stack management to private chat windows
+            A. de Bernis : added multiline support to private chat windows
+            A. de Bernis : set caret at the end when recalling text
+            A. de Bernis : messages sent by user are now immediatly displayed (a-la-irc)
+            A. de Bernis : cleaned the ChatPrivate constructor
+            A. de Bernis : corrected the /msg nick without text display bug
+            A. de Bernis : UI top buttons fixed (work for IE)
+
+16/10/2002, A. de Bernis : new design (again) for login panel
+            A. de Bernis : added input memory (up and down arrows)
+            A. de Bernis : major code reorganisation
+            A. de Bernis : added nick completion with the tab key
+            A. de Bernis : added newline support in input (easy cut'n paste)
+
+15/10/2002, A. de Bernis : renamed java-1.0.2-applet in java-applet
+            A. de Bernis : applet try to get user list before login
+            A. de Bernis : new design of login panel
+            A. de Bernis : login not possible if server is down
+
+14/10/2002, A. de Bernis : added IE signed archive and tested it
+            A. de Bernis : new "maintainer" directory for signing files
+
+09/10/2002, A. de Bernis : started to add i18n support through locales
+            A. de Bernis : cleaned the applet output
+
+06/10/2002, A. de Bernis : added client compatibility list
+            A. de Bernis : new archive for Sun-style signed jar
+
+05/10/2002, A. de Bernis : added new class files into the .jar archive
+            A. de Bernis : cleaned the Makefile
+
+04/10/2002, A. de Bernis : added new connection code to the applet
+            A. de Bernis : added parameter ServerHost
+            A. de Bernis : added IE and Netscape security interface stubs
+            A. de Bernis : .jar file is now signed (Java2 security model)
+
+27/09/2002, A. de Bernis : splitted the clients and serve ChangeLog
+            A. de Bernis : corrected new msg indicator bug
+            A. de Bernis : pssible fix for non display of font in IE
+
+
+
+

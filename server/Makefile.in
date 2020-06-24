@@ -1,0 +1,85 @@
+
+@SET_MAKE@
+
+# Autoconf installation directories
+rootdir=@PWDD@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+sbindir=@sbindir@
+datadir=@datadir@
+sysconfdir=@sysconfdir@
+mandir=@mandir@
+localedir= $(datadir)/locale
+
+srcdir=${rootdir}/src
+docdir=${rootdir}/doc
+make_bindir=${rootdir}/bin
+INSTALL=@INSTALL@
+INSTALL_DIR=${INSTALL} -d
+
+# Chat_server specific
+PACKAGE = @PACKAGE@
+VERSION = @VERSION@
+SERVERMODE=0755
+
+all:
+	cd intl && ${MAKE}
+	cd po && ${MAKE}
+	cd src && ${MAKE}
+
+translations:
+	cd po && ${MAKE}
+
+install: all install-bin install-man install-intl
+	@echo
+	@echo 'Installation successful'
+	@echo '~~~~~~~~~~~~~~~~~~~~~~~~'
+	@echo
+	@echo "    server binary        : $(sbindir)/chat_server"
+	@echo "    man page             : $(mandir)/man8/chat_server.8"
+	@echo "    sample config file   : $(sysconfdir)/chat.conf.sample"
+	@echo "    sample motd file     : $(sysconfdir)/chat.motd.sample"
+	@echo "    sample password file : $(sysconfdir)/chat.passwords.sample"
+	@echo
+	@echo '  You should now install the java client in your webtree. See the'
+	@echo 'INSTALL documentation in the client archive.'
+	@echo
+
+install-bin:
+	@echo Installing binary and config file ...
+	test -d ${sbindir} || $(INSTALL_DIR) -m 755 ${sbindir}
+	$(INSTALL) -m $(SERVERMODE) ${make_bindir}/chat_server ${sbindir}
+	test -d ${sysconfdir} || $(INSTALL_DIR) -m 755 ${sysconfdir}
+	$(INSTALL) -m 0444 ${srcdir}/chat.conf ${sysconfdir}/chat.conf.sample
+	$(INSTALL) -m 0444 ${srcdir}/chat.motd ${sysconfdir}/chat.motd.sample
+	$(INSTALL) -m 0444 ${srcdir}/chat.passwords ${sysconfdir}/chat.passwords.sample
+
+install-man:
+	@echo Installing man pages ...
+	@test -d ${mandir}/man8 || ${INSTALL_DIR} ${mandir}/man8
+	$(INSTALL) -m 0444 ${docdir}/chat_server.8 ${mandir}/man8
+
+install-intl:
+	@echo Installing translation files
+	cd po && ${MAKE} install
+
+
+clean:
+	rm -f ./bin/chat_server
+	cd src && ${MAKE} clean
+	cd intl && ${MAKE} clean
+	cd po && ${MAKE} clean
+	rm -f ./po/Makefile.in
+	rm -f ./po/POTFILES
+
+
+
+distclean: clean
+	rm -f config.cache
+	rm -f config.log
+	rm -f config.status
+	rm -f Makefile
+	cd src && ${MAKE} distclean
+
+

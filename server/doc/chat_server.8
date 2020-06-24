@@ -1,0 +1,256 @@
+\" -*- nroff -*-
+.\"
+.\" Chat_Everywhere
+.\" Copyright (C) 2000-2004 A. de Bernis, <alexis@bernis.org>
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH CHAT_SERVER 8 "January 2004" "A. de Bernis" "User Manuals"
+.SH NAME
+.nf
+chat_server \- Web chat server of the Chat Everywhere package
+.sp
+.SH SYNOPSIS
+.BI "chat_server [ " options " ]"
+.fi
+.SH DESCRIPTION
+.LP
+The 
+.B Chat_Everywhere
+program is a web-oriented chat package composed of a server and multiple clients.
+It allows an Irc-like chat with mutiple levels of hierarchy. Actions can
+be taken to ban, kick or ignore an user. Advanced options such as IP-based
+identification, nick reservation and auto-op are also possible.
+.LP
+.B Chat_everywhere
+has also a very small footprint in cpu time and in
+memory, and is very fast due to is multithreaded architecture. It does
+not need root privileges and special cares have been taken to avoid
+buffer overflow attacks.
+.LP
+The included java applet client allows client to connect with only
+a java-enabled browser.
+
+.SH OPTIONS
+.TP
+.BI -b \fR,\fP \ --background
+Make the server run in background (daemon mode.)
+.TP 
+.BI \-c\  <config-file> \fR,\fP\ --config-file= <config-file>
+Use the alternate configuration file instead of the default
+.IR ./chat.conf
+.TP 
+.BI \-p\  <port> \fR,\fP\ --port= <port>
+Tell the server to listen to the TCP port number \fI<port>\fP rather
+than listening to TCP port 54321 (default)
+.TP
+.BI -v \fR,\fP \ --version
+Writes the version number and exits
+.TP
+.BI -h \fR,\fP \ --help
+Show a summary of the commands
+.TP
+.BI \-l\  <file> \fR,\fP\ --log= <file>
+Use the alternate logging file instead of the default
+.IR ./chat.log
+
+.SH THE CONFIGURATION FILE 
+The default chat_everwhere configuration file is
+.I ./chat.conf.
+It is made of lines looking like
+.LP
+.in +3
+.IB <keyword> \  <value>
+.in -3
+.LP
+or of comment lines that start with a hash
+.B #
+character.
+You may split a line into several ones by finishing them by a \\.
+.LP
+There follows a description of the keywords:
+.TP
+.B AdminEmail admin@server.com
+Set the e-mail address that will be returned to users thanks to the
+\'%E\' escape sequence.
+.TP
+.B AutoLevel nick1@ip1[/sub1]:level, nick2@ip2[/sub2]:level, ...
+Upgrades automatically the given user at the given level on login.
+Warning : the authentication is only nick and IP based, do it is not
+so strong (ie. Handle with care). You may use the ReserveNick directive
+to "protect" a nick from being used. Nick is not case sensitive.
+Default is nothing (or no directive at all).
+.TP
+.B BeepOnLogin { yes | no }
+If set to 'yes', the server will beep at each now login.
+Default is no.
+.TP
+.B ListenIP ip
+Tell on which IP to "assign" the server, useful if you have multiple network
+interfaces and if you want to have two differents servers on the private
+or public side (or make it available only to the private side for example).
+Default is 0.0.0.0 (ie. listen on all interfaces)
+.TP
+.B LogFile file
+File used to store the server logs. You may use /dev/null if you don't
+care about logs (not recommended).
+Default is ./chat.log
+.TP
+.B LogTalk file
+file in wich is logged all the public conversations that
+occurs on the channel. If not specified, no logging is done.
+Default is nothing (no logging)
+.TP
+.B OpPass password
+Password used to gain level 9 (op). Password must be a single string
+without spaces.
+Default is "password" (change it!).
+.TP
+.B Order { Allow | Deny }, { Deny | Allow }
+.TP
+.B AllowIP ip1/sub1, ip2/sub2, ...
+.TP
+.B DenyIP ip1/sub1, ip2/sub2, ...
+Ip filtering directives. You may block some IPs or subnets to provide a
+packet filter - like way of accessing to chat_server.
+Order : select the order in which Allow and Deny directives are tested.
+The first matching directive is applied. If no matching directives are
+found, the IP is allowed (that's why you may not use it as a firewall).
+Then, use AllowIP and DenyIP to select which ranges to allow or to deny.
+
+Example : to allow only a private class C network : 192.168.0.0-255 and
+another one : 172.16.0.0/16 you would have :
+
+Order Allow, Deny
+AllowIP 192.168.0.0/24, 172.16.0.0/16
+DenyIP 0.0.0.0/0
+
+Note : 0.0.0.0/0 matches any host while 0.0.0.0/32 matches no host.
+Default is to allow everyone.
+.TP
+.B MaxUsers number
+number is the maximum number of users allowed at a time. When this limit
+is reached, all further connections will be denied. -1 stands for no
+limit.
+Default is -1.
+.TP
+.B MaxUserConnections number
+sets the maximum number of simultaneous allowed connections per IP. Use
+-1 to set no limit. Nick is not case sensitive. Default is -1.
+.TP
+.B MotdFile file
+Set the file in which is stored the Message Of The Day that will be
+displayed at the user after his login. You may put special escape sequences
+in it (see the
+.B ESCAPE SEQUENCES
+section).
+.TP
+.B PidFile file
+Set the file in which to store the process id when we start. This value can
+be used by external scripts to automatically kill or restart the program.
+Default is /dev/null (no pid storage) as it is not used yet
+.TP
+.B PingTimeout delay
+Set the delay in seconds for ping timeout. If the client does not answer
+to server pings after the specified delay, it will be deconnected
+with a "ping timeout" error. A value of 0 disables the check for ping timeouts.
+Default is 60 (1 minute).
+.TP
+.B ReservedNick nick1@ip1[/sub1], ...
+Reserve a nick to a restricted range of IPs, this may be useful with
+the AutoLevel directive to prevent from nick spoofing.
+Note : You may also forbid some nick with a line like
+
+ReserveNick h4x0r@0.0.0.0
+
+Default is nothing (or no directive at all).
+.TP
+.B ServerPort port
+Tells the server on which port to wait for incoming connections.
+Default is 5656.
+.TP
+.B ServerStatsMinLevel level
+Minimum level (0-9) required to use the /stats command. This command displays
+informations about the server internal state.
+Default is 9.
+.TP
+.B Statistics { On | Off | GlobalOnly }
+Select how many statistics will be kept by the server. 'On' activates
+global (server) and user statistics, 'Off' disables completely the
+statistics, and GlobalOnly disables per-user statistics. Each user
+stats is about 40 bytes in memory. Default is 'On'.
+.TP
+.B UsersInfoMinLevel level
+Minimum level required to use the /usersinfo command. This command displays
+sensitive informations such as the level of the user or its IP.
+Default is 9.
+.TP
+.B UsersFile file
+File in which the server will store the connected users
+this is a simple text file with the nicks on each line. It is updated
+(= overwritten) when a user connects and deconnects. It can be used to
+display somewhere on the website the names of the logged users.
+Default is nothing (no users file)
+.TP
+.B UserStatsMinLevel level
+Minimum level (0-9) required to use the /stats nick command. This command displays
+informations about the user such as login time or number of times it has been
+kicked.
+Default is 9.
+
+
+.SH ESCAPE SEQUENCES
+.LP
+Escape sequences are special characters that you can put in the text sent
+by the server (like in the motd file (not implemented yet)). They will be
+replaced by the correct values at display time.
+.LP
+Escape sequences are, by default, introduced by the \'%\' character (this is
+configurable). The following character tells which sequence to use (beware
+of the case).
+.nf
+
+	%%		%
+.\"	%n		\\n (newline)
+	%t		\\t (tabulation)
+	%T		local time (form Tue Apr 17 13:01:36 2001)
+	%E		maintainer e-mail address (see AdminEmail)
+	%R		resolved remote host name
+	%L		local host name
+	%U		nick of the client
+	%M		maximum number of users allowed
+	%N		current number of users
+
+.fi
+
+.SH SIGNALS
+.LP
+You may send a SIGHUP (kill -HUP pid_of_chat_server) to chat_server to
+force it to re-load its configuration without having to stop it. It may be
+useful to change the op password or some other values without having to
+stop completely the server.
+.LP
+Note that some values will need a restart to be taken in account. Especially
+the ServerPort value and some others that are used at run-time. 
+.LP
+You can also send a signal 10 (SIGUSR1) to display the list of currently
+connected clients. This is mostly useful for debugging. Use the command
+kill -10 pid_of_chat_server.
+.SH AUTHORS
+.LP
+The 
+.B Chat_everywhere
+package is maintained by Alexis de Bernis <alexis@bernis.org>.
+Feel free to contribute by sending patches or comments.

@@ -1,0 +1,42 @@
+TODO
+
+	- administrative interface, to see the server current config
+	and allow to restart / change the config from anywhere
+
+	- Add escape sequences for user statistics
+	
+	- generic help (as text files) invoked by the /help command
+
+	- enhance the password protection for nicks
+	/pass oldpass newpass to change the password
+
+	- flood protection (5 lines in 3 seconds for a nick)
+
+	- server linking
+
+	- put a ban's reason to ban command, and display it
+	when refusing login
+
+	- rethink a binary "all-in-one" distribution
+
+	- MySQL backend (cleanly done : should be activated in the
+	configure style).
+	
+	- CMS integration : lile AWF, PhpNuke, ... The MySQL backend
+	would help a lot.
+
+	- storage to prevent loss of infos in case of crash
+		- store ban / gag infos
+		- store statistics
+
+	- moderated channels : would set a minimum level to be allowed to
+	talk. Example : /moderate 5 -> you need at least level 5 to be allowed
+	to talk
+
+	- invisible administrator (???)
+	
+	- add client parameters to give options default value and an option
+	to disable the Options button.
+
+	- check that connection is closed cleanly in every cases (seems that
+	we have some stale sockets).

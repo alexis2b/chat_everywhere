@@ -1,0 +1,115 @@
+dnl Process this file with autoconf to produce a configure script.
+
+divert(0)dnl
+# Copyright(c) 2000-2004, A. de Bernis <alexis@bernis.org>
+# All rights reserved.
+#
+# Use and distribution of this program and its source code are governed
+# by the terms and the conditions if the GPL Software License ("doc/COPYING")
+undivert(0)
+
+
+dnl configure initialization
+AC_PREREQ(2.13)
+AC_INIT(src/chat_server.h)
+AC_CONFIG_AUX_DIR(dist)
+AC_CONFIG_HEADER(src/config.h)
+
+dnl defines Package name, version and release date
+PACKAGE="chat_server"
+ce_server_version=`cat $srcdir/src/VERSION`
+ce_server_release=`cat $srcdir/src/RELEASE`
+AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE")
+AC_DEFINE_UNQUOTED(CHAT_SERVER_VERSION, "${ce_server_version}")
+AC_DEFINE_UNQUOTED(CHAT_SERVER_RELEASE, "${ce_server_release}")
+AC_SUBST(PACKAGE)
+VERSION=${ce_server_version}
+AC_DEFINE_UNQUOTED(VERSION, "$VERSION")
+AC_SUBST(VERSION)
+
+PWDD=`pwd`
+AC_SUBST(PWDD)
+
+DEFAULT_CONFIG_FILE=${sysconfdir}/chat.conf
+AC_SUBST(DEFAULT_CONFIG_FILE)
+
+dnl Standard checks
+AC_CANONICAL_SYSTEM
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+AC_ARG_ENABLE(getoptlong,[  --enable-getoptlong   force using/disabling the internal GNU getopt package],
+	[case $enable_getoptlong in
+         n*|N*) USE_GETOPT=no ;;
+         *)     USE_GETOPT=yes ;;
+         esac])
+
+AC_HEADER_STDC
+AC_HEADER_TIME
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS(sys/types.h sys/socket.h arpa/inet.h getopt.h signal.h \
+  sys/wait.h sys/stat.h unistd.h)
+
+AC_TYPE_SIGNAL
+AC_TYPE_SIZE_T
+
+AC_STRUCT_TM
+
+AC_C_CONST
+
+AC_FUNC_ALLOCA
+AC_FUNC_VPRINTF
+AC_FUNC_WAIT3
+AC_CHECK_FUNCS(gethostname select socket strstr strchr snprintf \
+  strcasecmp strncasecmp memcpy getdomainname) 
+
+
+dnl Solaris needs these
+AC_CHECK_LIB(nsl, getdomainname)
+AC_CHECK_LIB(socket, socket)
+
+
+
+dnl Where is the getopt_long function to be used
+case $USE_GETOPT in yes|no)
+  AC_MSG_CHECKING(for getopt_long to assume by config argument)
+esac
+if test x$USE_GETOPT = xyes ; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(ENABLE_GETOPT_LONG)
+  GETOPTLONG="getopt.c getopt1.c"
+elif test x$USE_GETOPT = xno ; then
+  AC_MSG_RESULT(no)
+else AC_CHECK_FUNC(getopt_long, result=yes, result=no)
+  if test x$result = xno ; then
+    GETOPTLONG="getopt.c getopt1.c"
+  fi
+fi
+
+dnl Check if socklen_t is defined (not the case of MacOS X)
+dnl it may be defined in several places, sys/socket.h or unistd.h
+AC_CHECK_TYPES(socklen_t, , , [
+#if HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
+#if HAVE_SYS_SOCKET_H
+# include <sys/socket.h>
+#endif])
+
+
+dnl Check if pid_t exists
+AC_TYPE_PID_T
+
+
+ALL_LINGUAS="cs de es fr pl"
+AM_GNU_GETTEXT
+AC_SUBST(GETOPTLONG)
+
+AC_OUTPUT(Makefile src/Makefile intl/Makefile po/Makefile.in)
+
+echo -e "\n"
+echo "    Chat Everywhere server successfully configured !"
+echo "    Now, type make and pray..."
+echo -e "\n"
+

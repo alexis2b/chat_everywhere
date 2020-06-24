@@ -1,0 +1,10 @@
+# builds
+*.jar
+*.cab
+# Maintainer files, keys and certificates
+alexisb
+*.spc
+*.cer
+*.pvk
+# misc
+.DS_Store

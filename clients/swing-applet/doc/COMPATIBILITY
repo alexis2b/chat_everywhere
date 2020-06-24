@@ -1,0 +1,36 @@
+
+
+                    Chat Everywhere Swing Client
+                          Compatibility
+						  
+                     Last updated : 12/02/2005
+                     (client version : 1.0.0)
+
+
+
+
+JVM : Java Virtual Machine, the software that runs the applet inside
+your browser.
+
+	This client makes use of the Swing library which is only supported
+right now by the Sun Java plugin. This plugin runs on Solaris, Windows,
+Linux and some other Unices (like BSD). It is supported in all the major
+web browsers such as Internet Explorer, Mozilla, or Netscape Navigator.
+
+	You can download and install the plugin for free at the following
+location : http://java.sun.com/getjava
+
+	This applet is always tested with the latest version of the Java
+plugin (1.4.2_06 as of now) but should be compatible with any of its release.
+
+
+Notes:
+~~~~~~
+
+	- unsigned applet does not support the connexion to a server different
+	from the one who served the web page (use of ServerHost parameter)
+
+
+If you have (un)successfully tested the Java client on other platforms,
+please let me know at <alexis@bernis.org>, thanks !
+

@@ -1,0 +1,50 @@
+# Make the windows tree
+
+TARGET="/win/chatev/ChatEverywhere-signed-ie"
+CURDIR=`pwd`
+
+rm -rf $TARGET
+rm -f ${TARGET}.cab
+mkdir $TARGET
+cd ../src
+
+# Main classes
+cp Chat.class $TARGET
+cp 'Chat$1.class' $TARGET
+cp ChatComThread.class $TARGET
+cp ChatPrivate.class $TARGET
+
+# Utility classes
+mkdir ${TARGET}/org
+mkdir ${TARGET}/org/chateverywhere
+cp org/chateverywhere/InputStack.class $TARGET/org/chateverywhere
+cp org/chateverywhere/InputDialog.class $TARGET/org/chateverywhere
+cp org/chateverywhere/MD5.class $TARGET/org/chateverywhere
+cp org/chateverywhere/MD5State.class $TARGET/org/chateverywhere
+
+# IE security classes
+mkdir ${TARGET}/com
+mkdir ${TARGET}/com/ms
+mkdir ${TARGET}/com/ms/security
+cp com/ms/security/PermissionID.class $TARGET/com/ms/security
+cp com/ms/security/PolicyEngine.class $TARGET/com/ms/security
+
+# Netscape security classes
+mkdir ${TARGET}/netscape
+mkdir ${TARGET}/netscape/security
+cp netscape/security/PrivilegeManager.class $TARGET/netscape/security
+
+# Resources
+mkdir ${TARGET}/org/chateverywhere/resources
+cp org/chateverywhere/resources/*.class $TARGET/org/chateverywhere/resources
+
+mkdir ${TARGET}/org/chateverywhere/resources/sounds
+cp org/chateverywhere/resources/sounds/*.au $TARGET/org/chateverywhere/resources/sounds
+
+
+# Copy certificates and batch files
+cd $CURDIR
+cp ms_alexisb.cer $TARGET/..
+cp ms_alexisb.pvk $TARGET/..
+cp ms_alexis.spc  $TARGET/..
+cp do_cab.bat $TARGET/..

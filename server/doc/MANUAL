@@ -1,0 +1,512 @@
+Chat Everywhere
+by Alexis de Bernis <alexis@bernis.org>
+v0.0.17a
+-----------------------------------------
+
+
+ [ Please note that this manual is completely work in progress ]
+ [ and that it is subject to a lot of changes !                ]
+ [ Consider this a very first draft                            ]
+
+
+
+1. Introduction
+
+Chat Everywhere is a simple and powerful chat client/server system for your web
+pages. Support channel administration, irc-like commands, connections filtering,
+extensive logging and much more. It Works in any Java compliant web browser.
+
+
+1.1. Chat Everywhere home page
+
+http://chateverywhere.sourceforge.net/
+
+
+1.2. Mailing-lists
+
+To subscribe to the Chat Everywhere general mailing-list, please go to
+http://lists.sourceforge.net/lists/listinfo/chateverywhere-general
+
+The mailing-list address is chateverywhere-general@lists.sourceforge.net
+
+It is a low traffic, announce oriented mailing-list.
+
+
+1.3. Copyright
+
+Chat Everywhere is copyright(c)1999-2004, A. de Bernis <alexis@bernis.org>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the efree Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the efree Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+
+
+
+
+.. Valid and invalid nicks
+
+ A nick is considered valid if :
+ 
+	- its length is less than MAX_NICK_LENGTH (in server_config.h)
+	the default value is 14 characters.
+	
+	- it is only composed of valid characters.
+	These are a-z A-Z 0-9 [ ] - and _
+
+Note that you can modify the set of valid characters using the
+AllowNickChar and DenyNickChar directives in the config file.
+AllowNickChar is used to add a previously invalid character to the
+set of valid characters, and DenyNickChar is used to forbid a
+previously valid character.
+Note that a space or a tabulation can never be a valid character
+in a pseudo.
+
+
+
+.. Putting the applet in a popup window
+
+It can be interesting to put the chat applet in a popup window on your
+website, so that the users can continue their browsing while staying
+connected. You can use the following code to do that.
+
+In your main webpage, include a link with the following code :
+
+<a href="chat_popup.html"
+   target="chat_popup"
+   onClick="javascript:window.open('chat_popup.html', 'chat_popup',
+    'width=660,height=450'); return false;">
+	Click here for chat !
+</a>
+
+Note that you can adjust the width and heigth parameters as you like.
+
+Then you need to create a chat_popup.html file containing the APPLET
+tag. Refer to the corresponding section for help on creating this page.
+
+
+
+
+
+
+
+.. Displaying the chat users on your web site
+
+It is often convenient to display the people actually on the chat in
+a small part of your website. This attracts people to your chat zone,
+and this allows them to see who is chatting without waiting for the
+applet to load.
+
+The method I expose here suppose that the chat server is running on
+the webserver. If that is not the case, it may be more complicated but
+still feasible.
+
+a. Use the UsersFile directive in chat.conf. The server will write in
+this file the name of the users actually connected, and will update it
+in real time when users join or quit the chat.
+Add in your chat.conf :
+	UsersFile /path/to/chat.users
+
+
+b. Create a CGI script that will read this file and output its content
+with some html style. I am using Cascading Style Sheets, so the script
+is just assigning a specific style to the user names. It also computes
+the total number of users actually on the chat.
+
+--------8<------------8<-----------8<----------
+#!/bin/sh
+# chatusers.cgi
+# 
+# Displays in an HTML format who is on the chat
+# right now
+#
+# Use <!--#exec cgi="path/to/chatusers.cgi"> in your .shtml page
+# to execute this script
+#
+# copyright(c)2003-2004, A. de Bernis <alexis@bernis.org>
+# Released under GPL
+
+USERSFILE="/path/to/chat.users"
+
+# Necessary at the beginning
+echo "Content-type: text/html"
+echo
+
+# Number of users first
+echo '<div class="chat_users_count">'
+cat $USERSFILE | wc | cut -f 7 -d " "
+echo '</div>'
+                                                                                
+# Display the content of the file, line by line
+cat $USERSFILE | gawk '{ print "<div class=\"chat_user\">"; print $1; print "</div>" }'
+--------8<------------8<-----------8<----------
+
+You can modify this script to fit your needs. My approach is
+to define some styles in a CSS. Namely :
+
+	- chat_user : style used to display the name of a person
+	connected to the chat.
+
+	- chat_users_count : style used to display the number of
+	people on the chat.
+	
+Here is my style definition for these :
+--------8<------------8<-----------8<----------
+# chat.css
+# Cascading Style Sheet
+.chat_user {
+        margin-left: 1em;
+        font-size: small;
+        font-style: italic;
+}
+
+.chat_users_count {
+        font-size: small;
+
+        margin-left: 5px;
+        margin-bottom: 1em;
+}
+
+.chat_users_count:before {
+        content: "Chat: ";
+}
+
+.chat_users_count:after {
+        content: " user(s)";
+}
+--------8<------------8<-----------8<----------
+
+Then you just need to include the chat.css stylesheet in your
+webpage. You need to have shtml support on your server: add the
+following line where you want to display the user numbers.
+
+<!--#exec cgi="/path/to/chatusers.cgi" -->
+
+This will include the output of the script into your webpage.
+
+
+
+
+
+
+
+x. The chat server configuration file
+
+  x.1. Generalities
+ 
+chat_server is configured to look for a default configuration file in
+your standard configuration directory (often /usr/local/etc/). You can
+specify another file on the command line with the -c (or --config=) switch.
+Example:
+
+    ./chat_server -c /etc/chat_server.conf
+
+The first word of a line is a keyword (directive) and there may be some
+arguments on the same line. Comments are introduced by a hash character
+(#). You can split a line into several ones by putting a slash at the end.
+Blank lines are ignored.
+Example:
+
+-- start --
+
+# this is a comment
+ReserveNick nick1@192.168.0.1, \
+nick2@192.168.0.2
+
+-- end --
+
+If the directive can take several arguments (like the ReserveNick example
+above) you can write the directive several times.
+Example:
+
+ReserveNick nick1@192.168.0.1, nick2@192.168.0.2
+
+is perfectly equivalent to
+
+ReserveNick nick1@192.168.0.1
+ReserveNick nick2@192.168.0.2
+
+You can force the server to re-read its configuration file (if you want to
+update some parameters without shutting down the server) by sending a signal
+SIGHUP to it (see the manual page of kill(1) for more informations).
+
+
+  x.2. Directives syntax
+
+Here is a list of all the directives with their argument.
+
+
+    x.2.1. AdminEmail
+
+Syntax: AdminEmail admin@server.com
+
+Set the e-mail address that will be returned to users thanks to the
+'%E' escape sequence (see the ESCAPES section for more). This can be
+displayed in the MotOfTheDay file or in an error message.
+
+Default is "root"
+
+
+    x.2.2. AutoLevel
+
+Syntax: AutoLevel nick1[@ip1[/sub1]]:level, nick2[@ip2[/sub2]]:level, ...
+
+Upgrades automatically the given user at the given level on login.
+Warning : the authentication is only nick and IP based, do it is not
+so strong (ie. Handle with care). You may use the ReserveNick directive
+to "protect" a nick from being used. Nick is not case sensitive.
+
+Default is nothing (or no directive at all).
+
+
+    x.2.3. BeepOnLogin
+
+Syntax: BeepOnLogin { yes | no }
+
+If set to 'yes', the server will beep at each now login.
+Default is no.
+
+
+    x.2.4. ListenIP
+
+Syntax: ListenIP ip
+
+Tell on which IP to "assign" the server, useful if you have multiple network
+interfaces and if you want to have two differents servers on the private
+or public side (or make it available only to the private side for example).
+Default is 0.0.0.0 (ie. listen on all interfaces)
+
+
+    x.2.5. LogFile
+
+Syntax: LogFile file
+
+File used to store the server logs. You may use /dev/null if you don't
+care about logs (not recommended).
+Default is ./chat.log
+
+
+    x.2.6. LogTalk
+
+Syntax: LogTalk file
+
+file in wich is logged all the public conversations that
+occurs on the channel. If not specified, no logging is done.
+Default is nothing (no logging)
+
+
+    x.2.7. OpPass
+
+Syntax: OpPass password
+
+Password used to gain level 9 (op). Password must be a single string
+without spaces.
+Default is "password" (change it!).
+
+
+    x.2.8. Order, AllowIP, and DenyIP
+
+Syntax: Order { Allow | Deny }, { Deny | Allow }
+        AllowIP ip1/sub1, ip2/sub2, ...
+        DenyIP ip1/sub1, ip2/sub2, ...
+
+Ip filtering directives. You may block some IPs or subnets to provide a
+packet filter - like way of accessing to chat_server.
+Order : select the order in which Allow and Deny directives are tested.
+The first matching directive is applied. If no matching directives are
+found, the IP is allowed (that's why you may not use it as a firewall).
+Then, use AllowIP and DenyIP to select which ranges to allow or to deny.
+
+Example : to allow only a private class C network : 192.168.0.0-255 and
+another one : 172.16.0.0/16 you would have :
+
+Order Allow, Deny
+AllowIP 192.168.0.0/24, 172.16.0.0/16
+DenyIP 0.0.0.0/0
+
+Note : 0.0.0.0/0 matches any host while 0.0.0.0/32 matches no host.
+Default is to allow everyone.
+
+
+    x.2.9. MaxUsers
+
+Syntax: MaxUsers number
+
+number is the maximum number of users allowed at a time. When this limit
+is reached, all further connections will be denied. -1 stands for no
+limit.
+Default is -1.
+
+
+    x.2.10. MaxUserConnections
+
+Syntax: MaxUserConnections number
+
+sets the maximum number of simultaneous allowed connections per IP. Use
+-1 to set no limit. Nick is not case sensitive. Default is -1.
+
+
+    x.2.11. MotdFile
+
+Syntax: MotdFile file
+
+Set the file in which is stored the Message Of The Day that will be
+displayed at the user after his login. You may put special escape sequences
+in it (see the ESCAPE SEQUENCES section).
+
+
+    x.2.12. PidFile
+
+Syntax: PidFile file
+
+Set the file in which to store the process id when we start. This value can
+be used by external scripts to automatically kill or restart the program.
+Default is /dev/null (no pid storage) as it is not used yet
+
+    x.2.13. PingTimeout
+
+Syntax: PingTimeout delay
+
+Set the delay in seconds for ping timeout. If the client does not answer
+to server pings after the specified delay, it will be deconnected
+with a "ping timeout" error. A value of 0 disables the check for ping timeouts.
+Default is 60 (1 minute).
+
+
+    x.2.14. ReservedNick
+
+Syntax: ReservedNick nick1@ip1[/sub1], ...
+
+Reserve a nick to a restricted range of IPs, this may be useful with
+the AutoLevel directive to prevent from nick spoofing.
+Note : You may also forbid some nick with a line like
+
+ReserveNick h4x0r@0.0.0.0
+
+Default is nothing (or no directive at all).
+
+
+    x.2.15. ServerPort
+
+Syntax: ServerPort port
+
+Tells the server on which port to wait for incoming connections.
+Default is 5656.
+
+
+    x.2.16. ServerStatsMinLevel
+
+Syntax: ServerStatsMinLevel level
+
+Minimum level (0-9) required to use the /stats command. This command displays
+informations about the server internal state.
+Default is 9.
+
+
+    x.2.17. Statistics
+
+Syntax: Statistics { On | Off | GlobalOnly }
+
+Select how many statistics will be kept by the server. 'On' activates
+global (server) and user statistics, 'Off' disables completely the
+statistics, and GlobalOnly disables per-user statistics. Each user
+stats is about 40 bytes in memory.
+
+Default is 'On'.
+
+
+    x.2.18. UsersInfoMinLevel
+
+Syntax: UsersInfoMinLevel level
+
+Minimum level required to use the /usersinfo command. This command displays
+sensitive informations such as the level of the user or its IP.
+Default is 9.
+
+
+    x.2.19. UsersFile
+
+Syntax: UsersFile file
+
+File in which the server will store the connected users
+this is a simple text file with the nicks on each line. It is updated
+(= overwritten) when a user connects and deconnects. It can be used to
+display somewhere on the website the names of the logged users.
+Default is nothing (no users file)
+
+
+    x.2.20. UserStatsMinLevel
+
+Syntax: UserStatsMinLevel level
+
+Minimum level (0-9) required to use the /stats nick command. This command displays
+informations about the user such as login time or number of times it has been
+kicked.
+Default is 9.
+
+
+
+
+
+x. The password file
+
+    x.1 format
+
+Each line must have the following format:
+
+login:level0:md5_hash
+    - login     is the nick you want to protect
+                (case insensitive)
+    - level0    is the initial level of the authentified user
+    - md5_hash  is a one-way hash of the password
+
+Comment lines are introduced by a '#'
+
+You can generate your own md5 hash by using the tool
+md5sum. Example :
+    echo -n "password" | md5sum | cut -d ' ' -f 1
+will give you the md5 hash to put in this file.
+The nick is case insensitive. 
+
+
+
+
+
+y. Escape sequences
+
+
+Escape sequences are special characters that you can put in the text sent
+by the server (like in the motd file (not implemented yet)). They will be
+replaced by the correct values at display time.
+
+Escape sequences are, by default, introduced by the \'%\' character (this is
+configurable). The following character tells which sequence to use (beware
+of the case).
+
+	%%		%
+	%t		\\t (tabulation)
+	%T		local time (form Tue Apr 17 13:01:36 2001)
+	%E		maintainer e-mail address (see AdminEmail)
+	%R		resolved remote host name
+	%L		local host name
+	%U		nick of the client
+	%M		maximum number of users allowed
+	%N		current number of users
+
+
+
+
+
+
+
+

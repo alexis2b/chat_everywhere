@@ -1,0 +1,88 @@
+Frequently asked questions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	This FAQ should answer most of the questions that you may have about using
+Chat Everywhere. If it does not, send me a mail with your question at
+alexis@bernis.org.
+
+
+1. Where can I find the latest version of Chat Everywhere ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  As of now, the project is hosted by sourceforge. You can check the latest news
+and download the latest releases at http://chateverywhere.sourceforge.net .
+
+
+2. What do I need to run it ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The server should compile fine on most Unix-like systems. I try to build
+it regularly on Linux, Solaris, Free-BSD, and sometimes on MacOS X. Apart from
+that, it is all standard POSIX C, so no special libraries are required.
+
+  The client is written in Java, and will work with most of the java enabled
+browsers (check the COMPATIBILITY file in the client documentation).
+
+
+3. Server ? Client ? What's that stuff means ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Chat Everywhere is actually two components : a server and a java applet
+(referred as the client). The server runs on its own, and receives the
+requests from the clients.
+
+  As of now, the only client available is a Java applet, so the user needs not
+install anything. Each time it will go on the chat web page, its browser will
+download and run the applet, thus acting as a client (it runs on the user
+computer, and not on the server).
+
+
+4. Can I use IRC commands ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The server can recognizes some special commands. Some are from Irc, some are
+unique to Chat Everywhere. A command starts by a slash / . You can have a list
+of the recognized commands by typing /help in the client. You can have a
+detailed help about a command by typing /help my_command.
+
+  For example /help op will give you some more help on the op command.
+  
+  Note that you may be denied the use of some commands under a given level.
+
+
+5. What are those levels ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  You can think of it as a rank. 0 is the lowest and 9 is the highest (operator).
+You can only take certain actions on people who have a rank lower than yours.
+For example, if you are level 2, you can kick (deconnect of the chat) the users
+at level 0 or 1, but not 2 or higher.
+
+  There are two ways to increase its level: using the /op command with the
+operator password, thus gaining level 9, or having somebody higher than you
+using the /setlevel command to increase your rank.
+
+  The administrator can also use the AutoLevel directive in the configuration
+file to give automatically a given rank to somebody based on its nick and/or
+its IP address.
+
+
+5. Do I need admin level (=root) to install and run chat_server ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  No, there is no need to have root privileges to install or run
+chat_server. But the default configuration expects to write in
+system-wide places, so you need to change the installation directory.
+
+For that, use the --prefix flag of the configure script.
+
+Example :
+
+$ ./configure --prefix=/home/foobar/chat
+$ make
+$ make install
+
+will install all the chat_server files in /home/foobar/chat
+
+
+

@@ -1,0 +1,84 @@
+#!/bin/sh
+# Makes a Chat Everywhere Swing Client release
+#
+# copyright(c) 2003, A. de Bernis <alexis@bernis.org>
+#
+
+CUR_PATH=`pwd`
+VERSION=`cat ../../../server/src/VERSION`
+REL_PATH="chat_everywhere-client-swing-${VERSION}"
+ABS_PATH="/tmp/release/${REL_PATH}"
+
+# Rebuild the client
+cd ../src
+make clean
+make
+make sign
+cd ..
+
+# Directories have been created by the server mkrel
+mkdir ${ABS_PATH}
+mkdir ${ABS_PATH}/src
+cp src/Makefile ${ABS_PATH}/src
+cp src/Chat.java ${ABS_PATH}/src
+cp src/Chat.class ${ABS_PATH}/src
+cp src/'Chat$1.class' ${ABS_PATH}/src
+cp src/ChatComThread.java ${ABS_PATH}/src
+cp src/ChatComThread.class ${ABS_PATH}/src
+cp src/ChatPrivate.java ${ABS_PATH}/src
+cp src/ChatPrivate.class ${ABS_PATH}/src
+
+mkdir ${ABS_PATH}/src/org
+mkdir ${ABS_PATH}/src/org/chateverywhere
+cp src/org/chateverywhere/*.java ${ABS_PATH}/src/org/chateverywhere
+cp src/org/chateverywhere/*.class ${ABS_PATH}/src/org/chateverywhere
+
+mkdir ${ABS_PATH}/src/org/chateverywhere/resources
+cp src/org/chateverywhere/resources/Makefile ${ABS_PATH}/src/org/chateverywhere/resources
+cp src/org/chateverywhere/resources/*.java ${ABS_PATH}/src/org/chateverywhere/resources
+cp src/org/chateverywhere/resources/*.native ${ABS_PATH}/src/org/chateverywhere/resources
+cp src/org/chateverywhere/resources/*.class ${ABS_PATH}/src/org/chateverywhere/resources
+
+mkdir ${ABS_PATH}/src/org/chateverywhere/resources/pics
+cp src/org/chateverywhere/resources/pics/*.gif ${ABS_PATH}/src/org/chateverywhere/resources/pics
+
+mkdir ${ABS_PATH}/src/org/chateverywhere/resources/sounds
+cp src/org/chateverywhere/resources/sounds/beep.au ${ABS_PATH}/src/org/chateverywhere/resources/sounds
+
+mkdir ${ABS_PATH}/src/com
+mkdir ${ABS_PATH}/src/com/ms
+mkdir ${ABS_PATH}/src/com/ms/security
+cp src/com/ms/security/*.java ${ABS_PATH}/src/com/ms/security
+cp src/com/ms/security/*.class ${ABS_PATH}/src/com/ms/security
+
+mkdir ${ABS_PATH}/src/netscape
+mkdir ${ABS_PATH}/src/netscape/security
+cp src/netscape/security/*.java ${ABS_PATH}/src/netscape/security
+cp src/netscape/security/*.class ${ABS_PATH}/src/netscape/security
+
+mkdir ${ABS_PATH}/sample 
+cp sample/*.html ${ABS_PATH}/sample
+
+mkdir ${ABS_PATH}/build
+cp build/ChatEverywhere-swing.jar ${ABS_PATH}/build
+cp build/ChatEverywhere-swing-signed-sun.jar ${ABS_PATH}/build
+
+mkdir ${ABS_PATH}/doc
+cp doc/INSTALL ${ABS_PATH}/doc
+cp doc/COMPATIBILITY ${ABS_PATH}/doc
+cp doc/TRANSLATORS ${ABS_PATH}/doc
+cp doc/CHANGES ${ABS_PATH}/doc
+cp doc/CHANGES /tmp/release/CHANGES.client-swing
+
+mkdir ${ABS_PATH}/contrib
+cp contrib/chat* ${ABS_PATH}/contrib
+
+# Put the important documentation at the top of the tree
+cd ${ABS_PATH}
+ln -s doc/INSTALL .
+
+# Make the archive
+cd /tmp/release
+tar -zcvf ${REL_PATH}.tar.gz ${REL_PATH}
+tar -jcvf ${REL_PATH}.tar.bz2 ${REL_PATH}
+cd ${CUR_PATH}

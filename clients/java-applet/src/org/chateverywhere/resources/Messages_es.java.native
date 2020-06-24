@@ -1,0 +1,57 @@
+/* es property file for Chat Everywhere
+ * Copyright (c) 2003, A. de Bernis <alexis@bernis.org>
+ * Translated by Carlos Saltos <csaltos@yahoo.com>
+ *
+ * Last update : Oct. 6th, 2003
+ */
+
+package org.chateverywhere.resources;
+
+
+public class Messages_es extends Messages {
+
+
+	public Object[][] getContents() {
+		return contents;
+	}
+	
+
+	static final Object[][] contents = {
+		{"MSG_USERS",			"Usuarios"},
+		{"MSG_TYPE_HERE",		"<--Teclea aquí"},
+		{"MSG_CLEAR",			"Limpiar"},
+		{"MSG_FONT",			"Fuente"},
+		{"MSG_ACTION",			"Acción"},
+		{"MSG_WELCOME",			"Bienvenido al Chat"},
+		{"MSG_LOADING",			"Cargando..."},
+		{"MSG_GO",				"Entrar"},
+		{"MSG_NICK",			"Seudónimo"},
+		{"MSG_SERVER_UP",		"El servidor esta arriba"},
+		{"MSG_CONNECTING",		"Conectando..."},
+		{"MSG_NO_PRIV_NS",		"Fallo al conseguir más privilegios (Netscape)."},
+		{"MSG_NO_PRIV_IE",		"Fallo al conseguir más privilegios (Internet Explorer)."},
+		{"MSG_NOT_FOUND",		"Falló la conexión : servidor no encontrado (verifique ServerHost)"},
+		{"MSG_NOT_SIGNED",		"Falló la conexión: el applet necesita ser firmado para conectarse a este servidor"},
+		{"MSG_CONN",			"Conectando al servidor"},
+		{"MSG_SRV_DOWN",		"Falló la conexión : el servidor debe estar caido."},
+		{"MSG_NEW_USER",		"se ha unido al chat"},
+		{"MSG_USER_QUIT",		"ha salido"},
+		{"MSG_POSS_NICKS",		"Seudónimos"},
+		{"MSG_CHAT",			"con Chat"},
+		{"MSG_ERROR",			"ERROR"},
+		{"MSG_AUTH_FAILED",		"Fallo de autentificación: seleccione un seudónimo sin proteger"},
+		{"MSG_NICK_PROTECTED",	"Seudónimo protegido"},
+		{"MSG_ASK_PASSWORD",	"Ingrese su contraseña:"},
+		{"MSG_OK",				"Aceptar"},
+		{"MSG_CANCEL",			"Cancelar"},
+		{"MSG_NEW_CONNECTION",	"Nuevo usuario conectado"},
+		{"MSG_AUTO_SCROLLING",	"Desplazamiento automático"},
+		{"MSG_NOTIFY_CONNECT",	"Notificar nueva conexción"},
+		{"MSG_BIP_ON_TEXT",		"Aviso cuando arribe un nuevo mensaje"},
+		{"MSG_OPTIONS",			"Opciones"},
+		{"MSG_BIP_AS_SOUND_FILE","Tocar aviso como un fichero de audio"},
+		{"MSG_SMILEYS_AS_PICS", "Desplegar caritas felices como imágenes"},
+		{"MSG_DISCONNECTED",	"desconectado"},
+	};
+
+}

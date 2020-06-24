@@ -1,0 +1,233 @@
+
+
+                         The Chat Everywhere Protocol
+
+                        A. de Bernis <alexis@bernis.org>						 
+						 
+
+
+			I.   Introduction
+			II.  Server -> Client commands
+				II.1.  CONNECTION command
+				II.2.  DECONNECTION command
+				II.3.  MSG command
+				II.4.  ERROR command
+				II.5.  TALK command
+				II.6.  PMSG command
+				II.7.  PING command
+				II.8.  USERS command
+				II.9.  LOGIN OK command
+				II.10. ACTION command
+				II.11. AUTH command
+			III. Client -> Server commands
+				III.1. LOGIN command
+				III.2. TALK command
+				III.3. PONG command
+				III.4. AUTH command
+			IV.  User commands
+			V.   Typical session
+
+
+I. Introduction
+================
+
+	This protocol is used between the server and the client. The general
+form of a command is :
+
+
+			ENTITY <|> COMMAND <|> ARG1 <|> ARG2 <|> ... <|> ENTITY
+			
+where ENTITY is the entity who issued the command (may be CLIENT or SERVER).
+"<|>" is the separator. There must be one line by message and only one message
+by line.
+
+
+II. Server -> Clients
+======================
+
+	II.1. CONNECTION command
+
+Form : SERVER <|> CONNECTION <|> nick <|> SERVER
+
+	This command is issued by the server when a new user has just connected.
+All the clients are notified except the newly connected client.
+	Its only argument is the nick of the client that joined.
+
+
+	II.2. DECONNECTION command
+
+Form : SERVER <|> DECONNECTION <|> Nick <|> SERVER
+
+	This command is the same as the preceding one, but is issued when a
+user has left the channel. All the clients are notified except the one
+which cut the connection.
+	The only argument is the nick of the client that left.
+
+	II.3. MSG command
+
+Form : SERVER <|> MSG <|> msg <|> SERVER
+
+	This command is issued whenever the server has a message to display to
+the user. It could be the Message of The Day (motd) when a client connects,
+or any informative message.
+	"msg" is the message to display to the user.
+
+	II.4. ERROR command
+
+Form : SERVER <|> ERROR <|> msg <|> SERVER
+
+	Same as the MSG command, but the "msg" is an error. There are two different
+commands for MSG and ERROR so as to display them in a different manneer.
+
+
+	II.5. TALK command
+
+Form : SERVER <|> TALK <|> nick <|> text <|> SERVER
+
+	The most used command : it is issued by the server when someone sent
+a public message. "nick" is the nick of the issuer, and "text" is his
+message.
+	Note that the issuer of the message *will* receive a TALK command.
+
+
+	II.6. PMSG command
+
+Form : SERVER <|> PMSG <|> nick <|> text <|> SERVER
+
+	Same as talk but for private messages. The message has been issued by
+"nick" for your eyes only (these messages are not even logged to the talk log
+file).
+
+
+	II.7. PING command
+
+Form : SERVER <|> PING <|> timestamp <|> SERVER
+
+	This command is not actually used. It may be used to test if the client
+is still alive, or to mesure the delay between the client and the server.
+The client must respond with a PONG command.
+	The timestamp is just a string that must be returned with the PONG
+command. It is useful in computing the client lag.
+
+
+	II.8. USERS command
+
+Form : SERVER <|> USERS <|> nick1 <|> nick2 <|> ... <|> SERVER
+
+	In response to a client USERS command, this message enumerates all
+the client on the channel.
+	Note : this command may be issued before being logged, for example
+to display the list of connected clients before login.
+
+
+	II.9. LOGIN OK command
+
+Form : SERVER <|> LOGIN OK <|> SERVER
+
+	Not really a command, this message indicates wether your LOGIN command
+has succeeded. As soon as you receive this message, you are member of the
+channel and you may send more commands.
+
+
+	II.10. ACTION command
+
+Form : SERVER <|> ACTION <|> nick <|> text <|> SERVER
+
+	This command is very similar to the TALK message, it is just indicating
+that the user is "simulating" an action (triggered by /me in the client).
+The display of this command should be handled differently by the client.
+
+
+	II.11. AUTH command
+
+Form : SERVER <|> AUTH <|> challenge <|> SERVER
+
+	This is an authentication request. It may be sent by the server after
+a LOGIN request from the client. When receiving this message, the client
+should ask the user a password, hash this passwords (MD5), add the challenge
+at the end of the hash, and hash again the result. Then, the client sent this
+back to the server with a client AUTH answer.
+	The hash things is to avoid clear-text passwords on the wire, and session
+replay attacks. But stay conscious that this is just a simple MD5 hash, one
+should not use sensitive passwords to protect a nick.
+
+
+III. Client -> Server commands
+===============================
+
+	III.1. LOGIN command
+
+Form : CLIENT <|> LOGIN <|> nick <|> CLIENT
+
+	The client must send this command as soon as it as successusfully
+connected to the server.
+	The nick is the one that the user is willing to have. If your login
+is accepted, the server will return a LOGIN OK message (see II.9.) or an
+ERROR message explaining why the login failed.
+
+
+	III.2. TALK command
+
+Form : CLIENT <|> TALK <|> text <|> CLIENT
+
+	This command is sent by the client when the user typed a public
+message. It will be redirected to all clients through a server TALK
+message (even to the client who issued the TALK message).
+
+
+	III.3. PONG command
+
+Form : CLIENT <|> PONG <|> timestamp <|> CLIENT
+
+	This command must be returned to the server as soon as possible
+after having received a PING. If the server-fixed delay is over and no
+PONG message has been received, the server will deconnect the client with
+a "ping timeout" error.
+	The timestamp is just the string that has been given with the PING
+command and which must be returned as is.
+
+
+	III.4. AUTH command
+
+Form : CLIENT <|> AUTH <|> hash <|> CLIENT
+
+	This command is sent after a server AUTH request. The only parameter is
+a MD5 hash of the concatenation of a password's hash with the server challenge.
+After sending this, client should wait for a LOGIN OK answer or some error
+message.
+
+
+
+IV. User commands
+==================
+
+	The user commands are like Irc-ones. This protocol was designed to have
+the lightest client possible, so the set of command directly sent by the
+client is very restrained (LOGIN and TALK).
+	But the user may directly issue somme commands to the server. The client
+won't try to parse them but will just redirect them to the server in the
+correct form.
+	Just type the /help command to see what are the user commands available.
+	
+
+V. Typical session
+===================
+
+	Let's analyse a typical session between a server and a client.
+	
+The client make the connection to the server (default : 5656/tcp) :
+
+client>  CLIENT <|> LOGIN <|> mynick <|> CLIENT
+server>  SERVER <|> LOGIN OK <|> SERVER
+server>  SERVER <|> MSG <|> line 1 of the motd file <|> SERVER
+server>  SERVER <|> MSG <|> line 2 of the motd file <|> SERVER
+client>  CLIENT <|> USERS <|> CLIENT
+server>  SERVER <|> USERS <|> foo <|> bar <|> mynick <|> SERVER
+client>  CLIENT <|> TALK <|> Hi foo and bar ! <|> CLIENT
+server>  SERVER <|> TALK <|> mynick <|> Hi foo and bar ! <|> SERVER
+.
+.
+.
+
+	to left the chat, just cut the connection or use the QUIT command.
+

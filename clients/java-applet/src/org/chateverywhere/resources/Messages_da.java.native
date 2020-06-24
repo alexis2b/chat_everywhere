@@ -1,0 +1,54 @@
+/* da_DK property file for Chat Everywhere
+ * Copyright (c) 2003, A. de Bernis <alexis@bernis.org>
+ * Translated by Tom Iversen <tom@digam.dk>
+ */
+
+
+package org.chateverywhere.resources;
+
+import java.util.ListResourceBundle;
+
+public class Messages_da_DK extends ListResourceBundle {
+
+	public Object[][] getContents() {
+		return contents;
+	}
+ 
+	static final Object[][] contents = {
+		{"MSG_USERS",			"Brugere"},
+		{"MSG_TYPE_HERE",		"<--Skriv her"},
+		{"MSG_CLEAR",			"Tøm skærm"},
+		{"MSG_FONT",			"Skrifttype"},
+		{"MSG_ACTION",			"Handling"},
+		{"MSG_WELCOME",			"Velkommen til Chat Everywhere"},
+		{"MSG_LOADING",			"Henter..."},
+		{"MSG_GO",			"Start"},
+		{"MSG_NICK",			"Navn"},
+		{"MSG_SERVER_UP",		"Chatten kører"},
+		{"MSG_CONNECTING",		"logger ind ..."},
+		{"MSG_NO_PRIV_NS",		"Failed to get some more privileges (Netscape)."},
+		{"MSG_NO_PRIV_IE",		"Failed to get some more privileges (Internet Explorer)."},
+		{"MSG_NOT_FOUND",		"Fejl under login: serveren blev ikke fundet (check ServerHost)"},
+		{"MSG_NOT_SIGNED",		"Fejl under login: du skal bruge en signed appletfor at connecte til denne host."},
+		{"MSG_CONN",			"Logger på chatten"},
+		{"MSG_SRV_DOWN",		"Fejl under login: serveren svarer ikke."},
+		{"MSG_NEW_USER",		"kommer ind på chatten"},
+		{"MSG_USER_QUIT",		"har forladt chatten"},
+		{"MSG_POSS_NICKS",		"Mulige navne"},
+		{"MSG_CHAT",			"Chat med"},
+		{"MSG_ERROR",			"FEJL"},
+		{"MSG_AUTH_FAILED",		"Fejl under godkendelse: vælg et ikke-beskyttet brugernavn"},
+		{"MSG_NICK_PROTECTED",          "Navn er beskyttet"},
+		{"MSG_ASK_PASSWORD",            "Skriv dit kodeord:"},
+		{"MSG_OK",			"OK"},
+		{"MSG_CANCEL",			"Fortryd"},
+		{"MSG_NEW_CONNECTION",          "Ny bruger connected"},
+		{"MSG_AUTO_SCROLLING",          "Auto-scrolling"},
+		{"MSG_NOTIFY_CONNECT",          "Meddel ved ny log ind"},
+		{"MSG_BIP_ON_TEXT",		"Bip ved tekst"},
+		{"MSG_OPTIONS",			"Indstillinger"},
+		{"MSG_BIP_AS_SOUND_FILE",       "Afslip Bip som lydfil"},
+		{"MSG_SMILEYS_AS_PICS",         "Vis smileys som billeder"},
+		{"MSG_DISCONNECTED",            "logget af"},
+	};
+}

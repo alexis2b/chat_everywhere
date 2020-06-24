@@ -1,0 +1,47 @@
+How-to release Chat Everywhere :-)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.  make sure the current code is stable and compiles on the
+    supported platforms.
+
+2.  modify the VERSION file to match the version number
+
+2b. modify the Chat.java file for Swing and Java applet to
+    match the new version.
+
+3.  update the Windows .cab for java-applet
+
+3b. modify the Java makefiles to set release compilation flags
+
+4.  use the mk_packages script to prepare the release
+
+4b. set back debug compilation flags in Makefile
+
+5.  check that the packages are compiling fine in /tmp/release
+    and make a quick review to check that all the files are there
+
+6.  distclean and update the CVS repository
+    cvs commit         in chat_everywhere/
+
+7.  tag the source
+    cvs tag "rel-0_0_xa" .   in chat_everywhere/
+
+8.  make the release on sourceforge.net
+     - add the new release
+     - disable the old one
+     - test the download
+     - put an announce
+
+9.  make the release on freshmeat.net
+
+10. update the web-site
+     - update the links on the d/l page
+     - add a news
+
+11. send an e-mail on the mailing-list
+
+12. adds the release line in the change logs.
+
+13. change the version number to "n+1" - devel
+
+

@@ -1,0 +1,52 @@
+/* fr_FR property file for Chat Everywhere
+ * Copyright (c) 2003, A. de Bernis <alexis@bernis.org>
+ */
+
+package org.chateverywhere.resources;
+
+import java.util.ListResourceBundle;
+
+public class Messages_fr extends ListResourceBundle {
+
+	public Object[][] getContents() {
+		return contents;
+	}
+ 
+	static final Object[][] contents = {
+		{"MSG_USERS",			"Présents"},
+		{"MSG_TYPE_HERE",		"<--Taper ici"},
+		{"MSG_CLEAR",			"Effacer"},
+		{"MSG_FONT",			"Police"},
+		{"MSG_ACTION",			"Action"},
+		{"MSG_WELCOME",			"Bienvenue sur Chat Everywhere"},
+		{"MSG_LOADING",			"Chargement..."},
+		{"MSG_GO",				"Go"},
+		{"MSG_NICK",			"Pseudo"},
+		{"MSG_SERVER_UP",		"Le serveur est connecté"},
+		{"MSG_CONNECTING",		"Connexion en cours..."},
+		{"MSG_NO_PRIV_NS",		"Impossible d'élever les privilèges (Netscape)."},
+		{"MSG_NO_PRIV_IE",		"Impossible d'élever les privilèges (Internet Explorer)."},
+		{"MSG_NOT_FOUND",		"Connexion échouée : serveur introuvable (vérifiez ServerHost)"},
+		{"MSG_NOT_SIGNED",		"Connexion échouée : l'applet doit être signée pour se connecter à ce serveur"},
+		{"MSG_CONN",			"Connexion au serveur"},
+		{"MSG_SRV_DOWN",		"Connexion échouée : le serveur est probablement arrêté"},
+		{"MSG_NEW_USER",		"a rejoint le chat"},
+		{"MSG_USER_QUIT",		"est parti"},
+		{"MSG_POSS_NICKS",		"Possibilités"},
+		{"MSG_CHAT",			"Chat avec"},
+		{"MSG_ERROR",			"ERREUR"},
+		{"MSG_AUTH_FAILED",		"Authentification échouée : choisissez un pseudo non protégé"},
+		{"MSG_NICK_PROTECTED",	"Pseudo protégé"},
+		{"MSG_ASK_PASSWORD",	"Tapez votre mot de passe:"},
+		{"MSG_OK",				"OK"},
+		{"MSG_CANCEL",			"Annuler"},
+		{"MSG_NEW_CONNECTION",	"Nouvel utilisateur connecté"},
+		{"MSG_AUTO_SCROLLING",	"Scrolling automatique"},
+		{"MSG_NOTIFY_CONNECT",	"Annoncer les nouveaux"},
+		{"MSG_BIP_ON_TEXT",		"Bipper sur nouveau texte"},
+		{"MSG_OPTIONS",			"Options"},
+		{"MSG_BIP_AS_SOUND_FILE","Bipper avec un fichier son"},
+		{"MSG_SMILEYS_AS_PICS", "Icone pour les smileys"},
+		{"MSG_DISCONNECTED",	"déconnecté"},
+	};
+}

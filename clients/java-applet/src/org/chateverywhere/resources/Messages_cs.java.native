@@ -1,0 +1,53 @@
+/* cs property file for Chat Everywhere
+ * Copyright (c) 2003, A. de Bernis <alexis@bernis.org>
+ * Translated by Milan Sliva <sliva@winduo.cz>
+ */
+
+package org.chateverywhere.resources;
+
+import java.util.ListResourceBundle;
+
+public class Messages_cs extends ListResourceBundle {
+
+	public Object[][] getContents() {
+		return contents;
+	}
+ 
+	static final Object[][] contents = {
+		{"MSG_USERS",			"Uživatelé"},
+		{"MSG_TYPE_HERE",		"<--Pište zde"},
+		{"MSG_CLEAR",			"Vymazat"},
+		{"MSG_FONT",			"Písmo"},
+		{"MSG_ACTION",			"Akce"},
+		{"MSG_WELCOME",			"Vítejte na Chatu Everywhere"},
+		{"MSG_LOADING",			"Nahrávám ..."},
+		{"MSG_GO",				"Jít"},
+		{"MSG_NICK",			"Jméno"},
+		{"MSG_SERVER_UP",		"Server je pøipraven"},
+		{"MSG_CONNECTING",		"Navazuji spojení ..."},
+		{"MSG_NO_PRIV_NS",		"Selhal požadavek na zvýšení práv (Netscape)."},
+		{"MSG_NO_PRIV_IE",		"Selhal požadavek na zvýšení práv (Internet Explorer)."},
+		{"MSG_NOT_FOUND",		"Pokus o spojení selhal : server nebyl nalezen (provìøte ServerHost)"},
+		{"MSG_NOT_SIGNED",		"Pokus o spojení selhal : applet potøebuje být zapsán pro pøipojení k tomuto serveru"},
+		{"MSG_CONN",			"Spojení na server"},
+		{"MSG_SRV_DOWN",		"Pokus o spojení selhal : server není aktívní."},
+		{"MSG_NEW_USER",		"pøipojen k hovoru"},
+		{"MSG_USER_QUIT",		"odešel"},
+		{"MSG_POSS_NICKS",		"Možná jména"},
+		{"MSG_CHAT",			"Rozhovor s"},
+		{"MSG_ERROR",			"Chyba"},
+		{"MSG_AUTH_FAILED",		"Authentication failed: choose a non-protected nick"},
+		{"MSG_NICK_PROTECTED",	"Nick protected"},
+		{"MSG_ASK_PASSWORD",	"Enter your password:"},
+		{"MSG_OK",				"OK"},
+		{"MSG_CANCEL",			"Cancel"},
+		{"MSG_NEW_CONNECTION",	"New user connected"},
+		{"MSG_AUTO_SCROLLING",	"Auto-scrolling"},
+		{"MSG_NOTIFY_CONNECT",	"Notify new connection"},
+		{"MSG_BIP_ON_TEXT",		"Bip on new text"},
+		{"MSG_OPTIONS",			"Options"},
+		{"MSG_BIP_AS_SOUND_FILE","Play bip as a sound file"},
+		{"MSG_SMILEYS_AS_PICS", "Display smileys as pics"},
+		{"MSG_DISCONNECTED",	"disconnected"},
+	};
+}

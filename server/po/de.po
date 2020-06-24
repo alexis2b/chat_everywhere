@@ -1,0 +1,465 @@
+# Module : chat-everywhere-server
+# Language : deutsch
+# Translated by : tim@holymonkey.com, 2002
+#
+# Copyright (C)  2002 Free Software Foundation, Inc.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: chat-everywhere-server 0.0.10a\n"
+"POT-Creation-Date: 2004-02-09 14:12+0100\n"
+"PO-Revision-Date: 2002-02-04 12:32+0200\n"
+"Last-Translator: tim@holymonkey.com\n"
+"Language-Team: Deutsch <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/auto_commands.c:76
+#, c-format
+msgid "Error: invalid AutoLevel parameter (%s)\n"
+msgstr ""
+
+#: src/auto_commands.c:199
+#, c-format
+msgid "Error: invalid ReserveNick parameter (%s)\n"
+msgstr ""
+
+#: src/chat_server.c:128
+#, fuzzy
+msgid ""
+"Chat Everywhere, copyright(C)2000-2004, A. de Bernis <alexis@bernis.org>\n"
+msgstr ""
+"Chat Everywhere, copyright(C)2000-2003 A. de Bernis <alexis@bernis.org>\n"
+
+#: src/chat_server.c:129
+#, c-format
+msgid "Version %s, released %s\n"
+msgstr "Version %s, released %s\n"
+
+#: src/chat_server.c:134
+#, c-format
+msgid ""
+"Usage : %s [Options]\n"
+"\n"
+msgstr "Gebrauch : %s [Options]\n"
+
+#: src/chat_server.c:136
+msgid "-b --background\t run the server into the background\n"
+msgstr "-b --background\t betreibe den server im hintergrund\n"
+
+#: src/chat_server.c:138
+msgid "-c --config file specifies an alternate config file\n"
+msgstr "-c --config datei spezifiziert eine alternative Konfigurationsdatei\n"
+
+#: src/chat_server.c:140 src/chat_server.c:146
+#, c-format
+msgid "\t\t default is %s\n"
+msgstr "\t\t der Standardwert ist %s\n"
+
+#: src/chat_server.c:143
+msgid "-h --help\t print this help\n"
+msgstr "-h --help\t drucke diese Hilfe\n"
+
+#: src/chat_server.c:145
+msgid ""
+"-l --log file\t specifies an alternate logging file (overrides config file)\n"
+msgstr ""
+"-l --log datei\t spezifiziert eine alternative Logdatei (geht vor der "
+"Konfigurationsdatei)\n"
+
+#: src/chat_server.c:148
+msgid "-p --port num\t specifies the port to bind to (overrides config file)\n"
+msgstr ""
+"-p --port num\t spezifiziert das Port zum binden (geht vor der "
+"Konfigurationsdatei)\n"
+
+#: src/chat_server.c:150
+msgid "-v --version\t print version informations\n"
+msgstr "-v --version\t druckt Versionsinfo\n"
+
+#: src/chat_server.c:233
+msgid ""
+"Error: failed to open or to create logging file,logging directed to stderr\n"
+msgstr ""
+"Error: konnte die Logdatei nicht öffnen oder kreiren, logge jetzt zu stderr\n"
+
+#: src/chat_server.c:251
+#, c-format
+msgid "Fatal error : cannot open passive socket on port %d"
+msgstr "Fatales Error: konnte passives Socket auf Port %d nicht öffnen"
+
+#: src/chat_server.c:255
+#, c-format
+msgid "Starting chat server on port %d"
+msgstr "Starte Chat Server auf Port %d"
+
+#: src/chat_server.c:312
+#, c-format
+msgid "Error : received buffer overflowed by %s\n"
+msgstr ""
+
+#: src/chat_server.c:398
+msgid "SIGHUP received, reading config file again"
+msgstr "SIGHUP erhalten, Konfigurationsdatei wird wieder gelesen"
+
+#: src/chat_server.c:415
+#, c-format
+msgid "Terminating at user request (SIGINT), uptime %s"
+msgstr "Terminiere auf Benutzeranfrage (SIGINT), uptime %s"
+
+#: src/chat_server.c:417
+#, fuzzy
+msgid "Terminating at user request (SIGINT)"
+msgstr "Terminiere auf Benutzeranfrage (SIGINT), uptime %s"
+
+#: src/chat_server.c:440
+#, c-format
+msgid "Terminating at system request (SIGTERM), uptime %s"
+msgstr "Terminiere auf Systemanfrage (SIGTERM), uptime %s"
+
+#: src/chat_server.c:442
+#, fuzzy
+msgid "Terminating at system request (SIGTERM)"
+msgstr "Terminiere auf Systemanfrage (SIGTERM), uptime %s"
+
+#: src/chat_server.c:690
+msgid "Error in accept(), maybe a SYN scan"
+msgstr "Error in accept(), vielleicht ein SYN scan"
+
+#. Log the connection attempt
+#: src/chat_server.c:698
+#, fuzzy, c-format
+msgid "Connection from %s"
+msgstr "Verbindungsversuch von %s verweigert"
+
+#: src/chat_server.c:702
+#, c-format
+msgid "Connection attempt from %s denied"
+msgstr "Verbindungsversuch von %s verweigert"
+
+#: src/chat_server.c:837
+#, c-format
+msgid "Main process started with pid %d"
+msgstr ""
+
+#: src/commands.c:166
+#, c-format
+msgid "Parse error : unknown command %s"
+msgstr "Grammatik error : unbekannter Befehl %s"
+
+#. FIXME : config value pour max number de failures
+#: src/command_auth.c:61
+#, fuzzy, c-format
+msgid "user %s tried to authenticate with a bad password"
+msgstr "%s hat versucht sich mit einem falshen Passwort zu oppen"
+
+#: src/command_ban.c:102
+#, c-format
+msgid "%s tried to ban %s with an inferior or equal level"
+msgstr "%s hat versucht %s mit einem minderwertigen Level zu verbannen"
+
+#: src/command_ban.c:121
+#, c-format
+msgid "%s upgrades ban of %s to level %d"
+msgstr "%s bringt die verbannung von %s auf Level %d"
+
+#: src/command_ban.c:163
+#, c-format
+msgid "%s has been banned by %s (%d)"
+msgstr "%s wurde von %s (%d) verbannt"
+
+#. the ban has expired : let's remove it
+#: src/command_ban.c:238
+#, c-format
+msgid "The ban of %s is over"
+msgstr ""
+
+#: src/command_gag.c:117
+#, fuzzy, c-format
+msgid "%s(%d) tried to gag %s(%d) with an inferior or equal level"
+msgstr "%s hat versucht %s mit einem minderwertigen Level zu verbannen"
+
+#: src/command_gag.c:136
+#, fuzzy, c-format
+msgid "%s upgrades gag of %s to level %d"
+msgstr "%s bringt die verbannung von %s auf Level %d"
+
+#: src/command_gag.c:163
+#, fuzzy, c-format
+msgid "%s has been gagged by %s(%d)"
+msgstr "%s wurde von %s (%d) verbannt"
+
+#: src/command_gag.c:221
+#, fuzzy, c-format
+msgid "%s(%d) tried to ungag %s (gag level %d)"
+msgstr "%s hat versucht Level %d zu erhalten"
+
+#: src/command_gag.c:234
+#, fuzzy, c-format
+msgid "%s has been successfully ungagged by %s"
+msgstr "%s wurde erfolgreich von %s zugelassen"
+
+#. the gag has expired : let's remove it
+#: src/command_gag.c:305
+#, c-format
+msgid "The gag of %s is over"
+msgstr ""
+
+#: src/command_ignore.c:103
+#, c-format
+msgid "%s now ignore %s"
+msgstr "%s ignoriert jetzt %s"
+
+#: src/command_kick.c:71
+#, c-format
+msgid "%s tried to kick %s with an inferior level"
+msgstr "%s hat versucht %s mit einem minderwertigen Level herauszuschmeissen"
+
+#. Ok, proceed with the kick
+#: src/command_kick.c:81
+#, c-format
+msgid "%s has been kicked by %s (%s)"
+msgstr "%s ist von %s (%s) herausgeschmissen worden"
+
+#: src/command_login.c:65
+#, fuzzy, c-format
+msgid "Login from %s failed : Invalid login attempt (%s)"
+msgstr "Login unerfolgreich : Ungültiger login Versuch : %s"
+
+#: src/command_login.c:78
+#, fuzzy, c-format
+msgid "Login from %s failed : empty nick"
+msgstr "Login unerfolgreich : Benutzer %s hat versucht ohne nick einzuloggen"
+
+#: src/command_login.c:84
+#, fuzzy, c-format
+msgid "Login from %s failed : nick is too long (%s)"
+msgstr "Login unerfolgreich : nick %s ist ungültig"
+
+#: src/command_login.c:89
+#, fuzzy, c-format
+msgid "Login from %s failed : nick is invalid (%s)"
+msgstr "Login unerfolgreich : nick %s ist ungültig"
+
+#: src/command_login.c:97
+#, fuzzy, c-format
+msgid "Login from %s@%s failed : max users limit reached"
+msgstr ""
+"Login unerfolgreich: %s@%s unerfolgreich weil die maximale Nummer von "
+"Verbindungen schon erreicht wurde"
+
+#: src/command_login.c:108
+#, fuzzy, c-format
+msgid "Login from %s@%s failed : maximum number of connections was reached"
+msgstr ""
+"Login unerfolgreich : %s@%s unerfolgreich weil seine maximale Nummer von "
+"Verbindungen schon erreicht wurde"
+
+#: src/command_login.c:117
+#, fuzzy, c-format
+msgid "Login from %s@%s failed : nick was registered"
+msgstr "Login unerfolgreich : %s@% , nick war registriert"
+
+#: src/command_login.c:128
+#, fuzzy, c-format
+msgid "Login from %s@%s failed : nick in use"
+msgstr "Login unerfolgreich : nick %s schon im gebrauch"
+
+#: src/command_login.c:141
+#, fuzzy, c-format
+msgid "Login from %s@%s failed : banned but tried to join (as %s)"
+msgstr ""
+"Login unerfolgreich : %s ist verbannt, aber hat versucht als %s einzutreten"
+
+#. Further auth required, we stand by here
+#: src/command_login.c:152
+#, c-format
+msgid "asked a password for user %s@%s"
+msgstr ""
+
+#: src/command_login.c:158
+#, fuzzy, c-format
+msgid "Login from %s@%s failed : guest login not allowed"
+msgstr ""
+"Login unerfolgreich: %s@%s unerfolgreich weil die maximale Nummer von "
+"Verbindungen schon erreicht wurde"
+
+#: src/command_login.c:191
+#, c-format
+msgid "%s matches a previous gag, applied again"
+msgstr ""
+
+#: src/command_login.c:199
+#, c-format
+msgid "Login successful from %s@%s"
+msgstr "Login erfolgreich von %s@%s"
+
+#: src/command_login.c:200
+#, c-format
+msgid "*** %s joined the chat"
+msgstr ""
+
+#: src/command_op.c:69
+#, c-format
+msgid "%s tried to op with a bad password"
+msgstr "%s hat versucht sich mit einem falshen Passwort zu oppen"
+
+#: src/command_op.c:78
+#, c-format
+msgid "%s gained level 9"
+msgstr "%s hat Level 9 erhalten"
+
+#: src/command_setlevel.c:78
+#, c-format
+msgid "%s tried to access level %d"
+msgstr "%s hat versucht Level %d zu erhalten"
+
+#: src/command_setlevel.c:93
+#, c-format
+msgid "%s downed himself to level %d"
+msgstr "%s hat sich zum level %d herabgelassen"
+
+#: src/command_setlevel.c:132
+#, c-format
+msgid "%s has been increased to level %d by %s"
+msgstr "%s hat Level %d von %s erhalten"
+
+#: src/command_stats.c:69
+#, c-format
+msgid "%s tried to view the server stats with a bad level (%d < %d)"
+msgstr ""
+
+#: src/command_stats.c:84
+#, c-format
+msgid "%s requested server stats successfully."
+msgstr ""
+
+#: src/command_stats.c:114
+#, c-format
+msgid "%s tried to view the user stats of %s with a bad level (%d < %d)"
+msgstr ""
+
+#: src/command_talk.c:57
+#, c-format
+msgid "Invalid TALK message : %s"
+msgstr "Ungültiges TALK Message: %s"
+
+#: src/command_unban.c:69
+#, c-format
+msgid "%s tried to unban %s"
+msgstr "%s hat versucht %s zuzulassen"
+
+#: src/command_unban.c:77
+#, c-format
+msgid "%s has been successfully unbanned by %s"
+msgstr "%s wurde erfolgreich von %s zugelassen"
+
+#: src/command_unignore.c:90
+#, c-format
+msgid "%s does not ignore %s anymore"
+msgstr "%s ignoriert %s nicht mehr"
+
+#: src/command_usersinfo.c:56
+#, c-format
+msgid "%s tried to use USERSINFO with a bad level (%d < %d)"
+msgstr "%s hat versucht USERSINFO mit dem falshen Level (%d < %d) zu benutzen"
+
+#: src/config_file.c:145
+msgid "Error : no config file found, default values will be used.\n"
+msgstr ""
+
+#: src/config_file.c:173
+#, fuzzy, c-format
+msgid "Error line %u : Last line of the config file is finishing by '\\'\n"
+msgstr "Error: Letzte Linie der Konfigurationsdatei hört mit '\\' auf\n"
+
+#: src/config_file.c:204
+#, c-format
+msgid "Error: directive \"%s\" unknown (line %d)\n"
+msgstr ""
+
+#: src/mem_utils.c:40
+msgid "Error : no more memory\n"
+msgstr "Error: kein Memory mehr\n"
+
+#: src/mem_utils.c:49
+#, c-format
+msgid "Successfully allocated %u bytes (total is now : %u)\n"
+msgstr "%u Bytes wurden erfolgreich reserviert (insgesamt jetzt: %u)\n"
+
+#: src/mem_utils.c:64
+msgid "Warning : efree(NULL) called"
+msgstr "Warning : efree(NULL) called"
+
+#: src/mem_utils.c:76
+#, c-format
+msgid "Successfully freed %u bytes (total is now : %u)\n"
+msgstr "%u Bytes wurden erfolgreich befreit (insgesamt jetzt: %u)\n"
+
+#: src/mem_utils.c:104
+#, c-format
+msgid "Successfully reallocated %u to %u bytes (total is now : %u)"
+msgstr "%u bis %u Bytes erfolgreich wieder reserviert (insgesamt jetzt : %u)"
+
+#: src/net_utils.c:177
+msgid ""
+"Error : local host name is too long, increase the value of "
+"MAX_INET_NAME_LENGTH in server_config.h"
+msgstr ""
+
+#: src/password_auth.c:183
+#, c-format
+msgid "Warning: no initial level specified for %s in password file (line %d)\n"
+msgstr ""
+
+#: src/password_auth.c:194
+#, c-format
+msgid "Warning: syntax error in password file line %d\n"
+msgstr ""
+
+#: src/restrict_command.c:121
+#, c-format
+msgid "Error : unknown command %s in the RestrictCommand directive\n"
+msgstr ""
+
+#: src/statistics.c:78
+msgid "Parse error in config file, Statistics value is not recognized\n"
+msgstr "Grammatik error in der Konfigurationsdatei, Statistikwert unbekannt\n"
+
+#: src/statistics.c:79
+msgid "Statistics are disabled\n"
+msgstr "Statistiken ausgeschaltet\n"
+
+#: src/users.c:150
+#, c-format
+msgid "User %s has quit (%s)"
+msgstr "Benutzer %s ist weggegangen (%s)"
+
+#: src/users.c:151
+#, fuzzy, c-format
+msgid "*** %s has quit (%s)"
+msgstr "Benutzer %s ist weggegangen (%s)"
+
+#: src/users.c:168
+#, c-format
+msgid "Deconnecting %s"
+msgstr ""
+
+#~ msgid "Error : %s just opened then closed the port (scan?)"
+#~ msgstr "Error: %s hat den Port geöffnet und sofot geschlossen (scan?)"
+
+#~ msgid "Error : pipe of %s has been closed by the child"
+#~ msgstr "Error: pipe von %s vom Kind geschlossen"
+
+#, fuzzy
+#~ msgid "Login from %s failed : invalid pre-login command received (%s)"
+#~ msgstr "Login unerfolgreich : Ungültiger login Versuch : %s"
+
+#, fuzzy
+#~ msgid "Login from %s failed : that was not a LOGIN command (%s)"
+#~ msgstr "Login unerfolgreich : das war kein LOGIN befehl : %s"
+
+#~ msgid "Error : %s re-requested LOGIN!"
+#~ msgstr "Error: %s hat ein LOGIN wieder verlangt"

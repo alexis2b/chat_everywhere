@@ -1,0 +1,31 @@
+
+
+                                Chat Server
+                                A. de Bernis
+                            <alexis@bernis.org>
+
+
+
+  Chat Server give you the possibility to easily put a real-time discussion
+forum on your website. It allows extended (Irc-like) commands, several levels
+of hierarchy and an easy to modify configuration file.
+  The goal of this project is to provide webmasters with a simple to use, but
+very configurable, chat zone on their site. The requirements on the client
+side are as low as a java enabled browser (most of them are). The server is
+very light (coded in standard, portable C), and can run on very small servers.
+It does not require admin (root) rights.
+
+	It features :
+
+	o= various channel-management functions (kick, ban, etc...)
+	o= hierarchy levels (from 0 to 9)
+	o= secure password protection
+	o= simple config file (a la Apache)
+	o= extended logging
+	o= easy integrated java applet with a configurable look
+	o= support for remote server (signed applet)
+	o= and... it's free and under GPL.
+
+	Please refer to INSTALL for more detailed instructions about
+how to install chat server on your system and BUGS if you encounter
+any problem with this program.

@@ -1,0 +1,55 @@
+/* ru property file for Chat Everywhere
+ * Copyright (c) 2003, A. de Bernis <alexis@bernis.org>
+ * translated by Victor Korobov <victor@fixedoddsgroup.com>
+ *
+ * Encoding : KOI8_R
+ */
+
+package org.chateverywhere.resources;
+
+import java.util.ListResourceBundle;
+
+public class Messages_ru extends ListResourceBundle {
+
+	public Object[][] getContents() {
+		return contents;
+	}
+ 
+	static final Object[][] contents = {
+		{"MSG_USERS",			"Пользователей в чате"},
+		{"MSG_TYPE_HERE",		"<--Писать здесь"},
+		{"MSG_CLEAR",			"Очистить"},
+		{"MSG_FONT",			"Шрифт"},
+		{"MSG_ACTION",			"Действие"},
+		{"MSG_WELCOME",			"Добро пожаловать в Chat Everywhere"},
+		{"MSG_LOADING",			"Загружается..."},
+		{"MSG_GO",				"Вперед"},
+		{"MSG_NICK",			"Ник"},
+		{"MSG_SERVER_UP",		"Сервер работает нормально"},
+		{"MSG_CONNECTING",		"Соединяется..."},
+		{"MSG_NO_PRIV_NS",		"Не смог получить привилегии (Netscape)."},
+		{"MSG_NO_PRIV_IE",		"Не смог получить привилегии (Internet Explorer)."},
+		{"MSG_NOT_FOUND",		"Ошибка связи: сервер не найден (проверьте ServerHost)"},
+		{"MSG_NOT_SIGNED",		"Ошибка связи: апплет должен быть соединен с сервером"},
+		{"MSG_CONN",			"Соединяется с сервером"},
+		{"MSG_SRV_DOWN",		"Ошибка связи: сервер не работает"},
+		{"MSG_NEW_USER",		"вошел в чат"},
+		{"MSG_USER_QUIT",		"ушел"},
+		{"MSG_POSS_NICKS",		"Возможные ники"},
+		{"MSG_CHAT",			"Чат с"},
+		{"MSG_ERROR",			"ОШИБКА"},
+		{"MSG_AUTH_FAILED",		"Доступ запрещен: лучше выберите незащищенный ник"},
+		{"MSG_NICK_PROTECTED",	"Ник защищен"},
+		{"MSG_ASK_PASSWORD",	"Введите пароль:"},
+		{"MSG_OK",				"OK"},
+		{"MSG_CANCEL",			"Cancel"},
+		{"MSG_NEW_CONNECTION",	"New user connected"},
+		{"MSG_AUTO_SCROLLING",	"Auto-scrolling"},
+		{"MSG_NOTIFY_CONNECT",	"Notify new connection"},
+		{"MSG_BIP_ON_TEXT",		"Bip on new text"},
+		{"MSG_OPTIONS",			"Options"},
+		{"MSG_BIP_AS_SOUND_FILE","Play bip as a sound file"},
+		{"MSG_SMILEYS_AS_PICS", "Display smileys as pics"},
+		{"MSG_DISCONNECTED",	"disconnected"},
+	};
+}

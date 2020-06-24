@@ -1,0 +1,55 @@
+/*  pl_PL.ISO8859-2 property file for Chat Everywhere
+ * Copyright (c) 2003, A. de Bernis <alexis@bernis.org>
+ *
+ * Translated by Piotr Szczepanski <ja@piotr-szczepanski.org>
+ * on the 20th of October, 2002.
+ */
+
+package org.chateverywhere.resources;
+
+import java.util.ListResourceBundle;
+
+public class Messages_pl extends ListResourceBundle {
+
+	public Object[][] getContents() {
+		return contents;
+	}
+
+	static final Object[][] contents = {
+		{"MSG_USERS",			"uczestników"},
+		{"MSG_TYPE_HERE",		"<-- wpisz swoj± wypowied¼"},
+		{"MSG_CLEAR",			"Wyczy¶æ"},
+		{"MSG_FONT",			"Czcionka"},
+		{"MSG_ACTION",			"Akcja"},
+		{"MSG_WELCOME",			"Witamy w Chat Everywhere"},
+		{"MSG_LOADING",			"£adowanie..."},
+		{"MSG_GO",				"Rozpocznij"},
+		{"MSG_NICK",			"Ksywka"},
+		{"MSG_SERVER_UP",		"Serwer jest uruchomiony"},
+		{"MSG_CONNECTING",		"£±czenie..."},
+		{"MSG_NO_PRIV_NS",		"Nie powiod³o siê uzyskanie dodatkowych przywilejów (Netscape)."},
+		{"MSG_NO_PRIV_IE",		"Nie powiod³o siê uzyskanie dodatkowych przywilejów (Internet Explorer)."},
+		{"MSG_NOT_FOUND",		"Po³±czenie nieudane: nie odnaleziono serwera (sprawd¼ ServerHost)"},
+		{"MSG_NOT_SIGNED",		"Po³±czenie nieudane: aplet musi byæ podpisany aby uzyskaæ po³±czenie"},
+		{"MSG_CONN",			"Pod³±czanie do serwera..."},
+		{"MSG_SRV_DOWN",		"Po³±czenie nieudane: serwer nie jest uruchomiony"},
+		{"MSG_NEW_USER",		"do³±czy³ siê do dyskusji"},
+		{"MSG_USER_QUIT",		"opu¶ci³y dyskusjê"},
+		{"MSG_POSS_NICKS",		"Mo¿liwe ksywki"},
+		{"MSG_CHAT",			"Rozmawiaj z"},
+		{"MSG_ERROR",			"B£¡D"},
+		{"MSG_AUTH_FAILED",		"Authentication failed: choose a non-protected nick"},
+		{"MSG_NICK_PROTECTED",	"Nick protected"},
+		{"MSG_ASK_PASSWORD",	"Enter your password:"},
+		{"MSG_OK",				"OK"},
+		{"MSG_CANCEL",			"Cancel"},
+		{"MSG_NEW_CONNECTION",	"New user connected"},
+		{"MSG_AUTO_SCROLLING",	"Auto-scrolling"},
+		{"MSG_NOTIFY_CONNECT",	"Notify new connection"},
+		{"MSG_BIP_ON_TEXT",		"Bip on new text"},
+		{"MSG_OPTIONS",			"Options"},
+		{"MSG_BIP_AS_SOUND_FILE","Play bip as a sound file"},
+		{"MSG_SMILEYS_AS_PICS", "Display smileys as pics"},
+		{"MSG_DISCONNECTED",	"disconnected"},
+	};
+}

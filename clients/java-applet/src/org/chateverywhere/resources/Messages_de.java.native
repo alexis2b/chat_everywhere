@@ -1,0 +1,53 @@
+/* de property file for Chat Everywhere
+ * Copyright (c) 2003, A. de Bernis <alexis@bernis.org>
+ * Translated by J.Schabetsberger <juergen@alterkon.de>
+ */
+
+package org.chateverywhere.resources;
+
+import java.util.ListResourceBundle;
+
+public class Messages_de extends ListResourceBundle {
+
+	public Object[][] getContents() {
+		return contents;
+	}
+ 
+	static final Object[][] contents = {
+		{"MSG_USERS",			"User"},
+		{"MSG_TYPE_HERE",		"<--Hier schreiben"},
+		{"MSG_CLEAR",			"Löschen"},
+		{"MSG_FONT",			"Schrift"},
+		{"MSG_ACTION",			"Aktion"},
+		{"MSG_WELCOME",			"Wilkommen bei Chat Everywhere"},
+		{"MSG_LOADING",			"lade..."},
+		{"MSG_GO",				"Los"},
+		{"MSG_NICK",			"Nick"},
+		{"MSG_SERVER_UP",		"Der Server läuft"},
+		{"MSG_CONNECTING",		"Verbinde..."},
+		{"MSG_NO_PRIV_NS",		"Konnte die erfoderlichen Privilegien nicht erlangen (Netscape)."},
+		{"MSG_NO_PRIV_IE",		"Konnte die erforderlichen Privilegien nicht erlangen (Internet Explorer)."},
+		{"MSG_NOT_FOUND",		"Verbindung nicht erfolgreich : Server nicht gefunden (überprüfe ServerHost)"},
+		{"MSG_NOT_SIGNED",		"Verbindung nicht erfolgreich : Um zu diesem Host zu verbinden muß das Applet signiert sein"},
+		{"MSG_CONN",			"Verbinde zum Server"},
+		{"MSG_SRV_DOWN",		"Verbindung nicht erfolgreich : Server scheint nicht zu laufen."},
+		{"MSG_NEW_USER",		"hat den Chat betreten"},
+		{"MSG_USER_QUIT",		"hat den Chat verlassen"},
+		{"MSG_POSS_NICKS",		"Mögliche Nicks"},
+		{"MSG_CHAT",			"Chat mit"},
+		{"MSG_ERROR",			"Fehler"},
+		{"MSG_AUTH_FAILED",		"Authentication failed: choose a non-protected nick"},
+		{"MSG_NICK_PROTECTED",	"Nick protected"},
+		{"MSG_ASK_PASSWORD",	"Enter your password:"},
+		{"MSG_OK",				"OK"},
+		{"MSG_CANCEL",			"Cancel"},
+		{"MSG_NEW_CONNECTION",	"New user connected"},
+		{"MSG_AUTO_SCROLLING",	"Auto-scrolling"},
+		{"MSG_NOTIFY_CONNECT",	"Notify new connection"},
+		{"MSG_BIP_ON_TEXT",		"Bip on new text"},
+		{"MSG_OPTIONS",			"Options"},
+		{"MSG_BIP_AS_SOUND_FILE","Play bip as a sound file"},
+		{"MSG_SMILEYS_AS_PICS", "Display smileys as pics"},
+		{"MSG_DISCONNECTED",	"disconnected"},
+	};
+}

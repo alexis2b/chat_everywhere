@@ -1,0 +1,106 @@
+
+Applet parameters (both for Java and Swing applets if not specified).
+
+server.name  (was ServerHost)
+server.port  (was ServerPort)
+	Host name (or IP address) and port number of the server to connect to.
+	This parameter is *optional*, if not specified, the applet will attempt
+	to connect to the web server.
+	IMPORTANT : due to Java security restrictions, you need a signed applet
+	if you want to connect to a server different from the web server !
+
+auto.nick  (old syntax : Nick  also accepted)
+	This parameter, if present, makes the chat client connects
+	automatically to the server with the given nick, without asking
+	the user. This is especially useful with dynamically generated
+	web pages where the user is already authenticated in some kind
+	of way. You can generate the auto.nick parameter to have the same
+	name on the web site and on the chat.
+	Look at the contrib/ directory for some examples of dynamically
+	generated logins.
+
+auto.startchatwith  (was StartChatWith)
+	If present, you are automatically starting with a private message
+	window for the user nick you specify.
+	This allows you, on a website, to put a list of all the available
+	users, and, when somebody click on a name, launch a chat session with
+	messages directed to this specific person.
+
+locale.language  (old syntax : Language  also accepted)
+locale.country   (old syntax : Country   also accepted)
+	These two parameters are used to set a website-defined locale.
+	I.E : you know that your users speak french, so you can force a
+	french locale.
+	The locale will impact the way characters are drawn (accents for
+	French, cyrillic, ...) and the messages users will get (translated
+	in their own language).
+	If not specified, the default user locale will be used, which is
+	often a good choice.
+	Available translations :
+	Language	Country		Result
+
+	  ca		   CA		Catalan
+	  cs		   CS		Czech
+	  da		   DK		Danish
+	  de		   DE		Deutsch
+	  en		   GB		English (Great-Britain)
+	  en		   US		English (US)
+	  es		   ES		Spanish
+	  fr		   FR		French (France)
+	  pl		   PL		Polish
+	  ru		   RU		Russian
+
+	IMPORTANT : you need to specify *both* parameters for this to
+	work.
+
+
+form.*	The applet zone itself (general settings)
+
+form.backgroundcolor (or BgColor)
+form.text.color      (or FgColor)
+	These settings allow you to set the colors of all the applet's elements
+	at once. These are the "default" settings for background and foreground
+	colors. You can use some more precise parameters later to change individual
+	components of the user interface (login area, user list, text zone...).
+	You need to specify a triplet of hexadecimal values (red, green and blue)
+	started by a "#".
+	Example :
+	#ff0000	bright red
+
+
+form.text.font	(or UIFontName)
+	This setting will specify the font used to render the user interface
+	(not the text you type) such as menus and labels.
+	If not specified, the "Arial" font is used.
+
+
+login.*
+	The login form displayed before entering the chat.
+	
+login.backgroundcolor  (was LoginFgColor)
+login.text.color       (was LoginBgColor)
+	Background and foreground colors of the login form.
+
+
+
+chat.*
+
+chat.text.font (or TextFontName)
+	Specifies the font used to render the text typed and displayed on the chat.
+	Default value is "Courier"
+
+
+
+chat.userlist.backgroundcolor  (was UsersBgColor)
+chat.userlist.text.color       (was UsersFgColor)
+	Background and Foreground color of the user list.
+
+chat.input.backgroundcolor     (was InputBgColor)
+chat.input.text.color          (was InputFgColor)
+	Background and Foreground colors of the input zone (where you type
+	your messages).
+
+chat.textarea.backgroundcolor   (was TextBgColor)
+chat.textarea.text.color        (was TextFgColor)
+	Background and foreground colors of the chat zone (where you
+	see everybody's messages).

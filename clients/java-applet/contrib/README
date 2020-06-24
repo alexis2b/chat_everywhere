@@ -1,0 +1,36 @@
+
+
+	These files are courtesy of Piotr Szczepanski <pxxs@staszic.waw.pl>.
+They show some examples of dynamically generated HTML files in order
+to make the client login automatically.
+
+	Going with 0.0.13a, these files have been updated to take into account
+the new .jar format.
+
+	All these files are released under GPL.
+
+											-- Alexis
+
+
+Here you can find examples of some methods of passing parameters to
+the chat client applet. If you find any ommissions/mistakes/etc. in
+them please let me know (pxxs@staszic.waw.pl).
+
+chat.cgi
+
+    This is a simple CGI script running in Bourne-compatible shell,
+    thus it should work on every UNIX platform. You can pass a
+    nick= parameter to it via GET method. If you won't, a form
+    allowing you to enter the nick will be shown.
+
+chat.html
+
+    This is a client-side method written in JavaScript. When you click
+    the button, the script will read the nickname you entered, truncate
+    the page and write HTML code that will run the chat client applet.
+
+chat.php
+
+    Basically, it does the same job as chat.cgi, but it's written
+    in PHP4. It also remembers your nick using cookies. If you pass
+    a nick= parameter via GET, the cookie setting will be overriden.

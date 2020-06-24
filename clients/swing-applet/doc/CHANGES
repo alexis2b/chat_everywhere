@@ -1,0 +1,71 @@
+
+Changes since last release :
+
+dd/mm/yyyy, author : comment
+
+
+12/02/2005, A. de Bernis : added Danish translation (thanks T. Iversen)
+
+
+===   Chat Everywhere 1.0.0 released ======================
+
+10/02/2003, A. de Bernis : added a buffered output (data was sent one byte
+                           after one byte!)
+            A. de Bernis : added capabilities reporting (language, version, ...)
+
+10/10/2003, A. de Bernis : added a "StartChatWith" applet parameter to
+                           automatically start a private chat upon login
+                           (thanks to djlyon for the idea!)
+
+07/10/2003, A. de Bernis : added a Catalan translation
+                           (thanks to Alfons!)
+
+06/10/2003, A. de Bernis : added a Spanish translation (thanks Carlos!)
+
+
+===   Chat Everywhere 0.0.17a released ====================
+
+===   Chat Everywhere 0.0.16a released ====================
+
+27/04/2003, A. de Bernis : messages with our nick are highlighted
+
+26/04/2003, A. de Bernis : ChatPane can now print smileys as pictures
+            A. de Bernis : added an option to turn the smiley rendering on/off
+
+25/04/2003, A. de Bernis : notification dialog would not have parent colors
+            A. de Bernis : user is notified of server deconnection
+
+24/04/2003, A. de Bernis : private chat window now appear centered
+
+23/04/2003, A. de Bernis : enhanced client stability, tests
+            A. de Bernis : new client notification dialog is centered
+            A. de Bernis : new option : play bip as sound file
+
+22/04/2003, A. de Bernis : huge code change to new threaded model
+            A. de Bernis : made the client working again :-)
+
+12/02/2003, A. de Bernis : updated language files
+            A. de Bernis : added new option : autoscrolling
+            A. de Bernis : added new styles when the user talks
+
+11/02/2003, A. de Bernis : added new option menu
+            A. de Bernis : added new option : notify new connection
+            A. de Bernis : added new option : beep on new text line
+
+10/02/2003, A. de Bernis : added new connection notification dialog
+
+04/02/2003, A. de Bernis : added Russian messages translation
+
+02/02/2003, A. de Bernis : added color chat to private window
+            A. de Bernis : some "cosmetic" changes to improve the look
+            A. de Bernis : changed the default font selection
+            A. de Bernis : input field now use same font as main text
+            A. de Bernis : added nick before input field
+
+01/02/2003, A. de Bernis : added same functionnalities as Awt applet
+            A. de Bernis : fixed tab nick completion
+            A. de Bernis : fixed pop-up appearance on user list
+            A. de Bernis : added color styles to the main text
+
+31/01/2003, A. de Bernis : created new project tree for the Java/Swing client
+

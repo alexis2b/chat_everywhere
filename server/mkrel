@@ -1,0 +1,66 @@
+#!/bin/sh
+#
+# Tool used to make a Chat Everywhere release
+#
+# A. de Bernis, July, 24th 2000
+# updated : Oct. 06th, 2002
+#
+# Warning : this script is very insecure! Don't run it in
+# "hostile" environment (nor as root)
+#
+
+
+CUR_PATH=`pwd`
+VERSION=`cat src/VERSION`
+REL_PATH="chat_everywhere-server-${VERSION}"
+ABS_PATH="/tmp/release/${REL_PATH}"
+
+# Clear the lang variables to make sure the date is in English
+LC_ALL= LANG= date +"%b. %dth, %Y" > src/RELEASE
+
+TESTID=`whoami`
+#if [ "x$TESTID"="xroot" ]; then
+#  echo "You shouldn't run this script as root!"
+#  exit 1
+#fi
+
+# Build the binaries
+make distclean
+./configure
+make
+make translations
+
+
+mkdir ${ABS_PATH}
+mkdir ${ABS_PATH}/doc
+mkdir ${ABS_PATH}/bin
+mkdir ${ABS_PATH}/dist
+mkdir ${ABS_PATH}/src
+mkdir ${ABS_PATH}/intl
+mkdir ${ABS_PATH}/po
+
+cp Makefile.in ${ABS_PATH}
+cp configure.in ${ABS_PATH}
+cp configure ${ABS_PATH}
+cp src/*.c            ${ABS_PATH}/src
+cp src/*.h            ${ABS_PATH}/src
+cp src/Makefile.in    ${ABS_PATH}/src
+cp src/config.h.in    ${ABS_PATH}/src
+cp src/VERSION        ${ABS_PATH}/src
+cp src/RELEASE        ${ABS_PATH}/src
+cp src/chat.conf      ${ABS_PATH}/src
+cp src/chat.motd      ${ABS_PATH}/src
+cp src/chat.passwords ${ABS_PATH}/src
+cp doc/* ${ABS_PATH}/doc
+cp dist/* ${ABS_PATH}/dist
+cp intl/* ${ABS_PATH}/intl
+cp po/* ${ABS_PATH}/po
+cp doc/README /tmp/release
+cp doc/CHANGES /tmp/release/CHANGES.server
+cd ${ABS_PATH}
+ln -s doc/README README
+ln -s doc/INSTALL INSTALL
+cd /tmp/release
+tar -zcvf ${REL_PATH}.tar.gz ${REL_PATH}
+tar -jcvf ${REL_PATH}.tar.bz2 ${REL_PATH}
+cd ${CUR_PATH}

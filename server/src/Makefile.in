@@ -1,0 +1,51 @@
+# Makefile for chat_everywhere
+#
+# A. de Bernis <alexis@bernis.org>
+
+
+PACKAGE=@PACKAGE@
+VERSION=@VERSION@
+
+# Autoconf directories
+prefix=@prefix@
+subdir=src
+datadir=@datadir@
+localedir= $(datadir)/locale
+top_builddir=@PWDD@
+
+CC=@CC@
+
+DEFAULT_CONFIG_FILE=@DEFAULT_CONFIG_FILE@
+DEFS= -DLOCALEDIR=\"${localedir}\" @DEFS@ \
+      -DDEFAULT_CONFIG_FILE=\"$(DEFAULT_CONFIG_FILE)\"
+INCLUDES=-I../intl
+CFLAGS=@CFLAGS@ -Wall $(INCLUDES) $(DEFS)
+LIBS=@LIBS@ @INTLLIBS@
+
+OBJS=command_action.o command_ban.o command_help.o command_ignore.o command_kick.o\
+     command_msg.o command_op.o command_quit.o command_seen.o \
+     command_setlevel.o command_stats.o command_talk.o command_unban.o \
+     command_unignore.o command_users.o command_usersinfo.o \
+     command_login.o command_auth.o command_gag.o command_capabilities.o \
+	 restrict_command.o \
+     commands.o communication.o fd_utils.o str_utils.o config_file.o logging_support.o \
+     net_utils.o auto_commands.o statistics.o mem_utils.o ping_timeout.o \
+     users.o users_list_file.o md5.o password_auth.o \
+     scheduler.o \
+	 @GETOPTLONG@
+
+all: chat_server
+
+chat_server: $(OBJS) chat_server.c chat_server.h server_config.h 
+	$(CC) $(CFLAGS) chat_server.c $(OBJS) $(LIBS) -o chat_server
+	test -d ../bin || mkdir ../bin
+	cp ./chat_server ../bin/chat_server
+
+clean:
+	rm -f *.o
+	rm -f ./chat_server
+
+distclean: clean
+	rm -f Makefile
+	rm -f config.h
+

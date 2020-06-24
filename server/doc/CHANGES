@@ -1,0 +1,326 @@
+
+Changes since last release :
+
+dd/mm/yyyy, author : comment
+
+
+===   Chat Everywhere 1.0.0 released ======================
+
+11/11/2004, A. de Bernis : finished "capabilities" commands implementation
+            A. de Bernis : decided to go for 1.0.0 (stable and ok now)
+
+09/02/2004, A. de Bernis : better password file syntax parser
+            A. de Bernis : copyright years changed to 2004
+            A. de Bernis : updated french translation
+
+23/01/2004, A. de Bernis : finished config file interface changes
+                           (default values are now internally managed)
+
+22/01/2004, A. de Bernis : recoded the configuration interface to simplify it
+                           (no outside changes visible, just internals)
+
+20/01/2004, A. de Bernis : allow long-sized multi-line directive
+            A. de Bernis : added an initial level field in the password file
+                           (what was done with AutoLevel before)
+
+14/01/2004, A. de Bernis : password file is re-read on sigHUP
+
+11/10/2003, A. de Bernis : cleaned the logging code a little bit
+
+08/10/2003, A. de Bernis : manual improvements, how to display the chat users
+                           on a web page
+
+07/10/2003, A. de Bernis : added an init script for chat_server in contrib/
+                           (Thanks to Carlos again!)
+
+06/10/2003, A. de Bernis : updated the Spanish translation (thanks Carlos!)
+
+
+===   Chat Everywhere 0.0.17a released ====================
+
+23/05/2003, A. de Bernis : gags are now persistent if the target logs out
+            A. de Bernis : added new directive AllowGuestLogin
+
+21/05/2003, A. de Bernis : added the /ungag command (symmetric of /gag)
+            A. de Bernis : added RestrictCommand for arbitrary cmd restriction
+                           (see chat.conf.sample for details)
+            A. de Bernis : deprecated UsersInfoMinLevel (for RestrictCommand)
+            A. de Bernis : added a task scheduler to perform some tasks at a
+                           given time (used by PingTimeout)
+            A. de Bernis : corrected a SIGSEGV bug in config_reread()
+            A. de Bernis : corrected a crash-bug in /unban algorithm
+            A. de Bernis : added timed bans using the new scheduler
+            A. de Bernis : added timed gags using the new scheduler
+            A. de Bernis : updated the Czech translation (thanks Milan!)
+
+20/05/2003, A. de Bernis : added gag command to globally ignore an annoying
+                           user (suggested by BHonigman@aol.com)
+            A. de Bernis : added two new config options AllowNickChar
+                           and DenyNickChar to change the set of characters
+                           that are valid for a nick without touching the code
+
+19/05/2003, A. de Bernis : enhanced the config file parser - code cleanup
+
+18/05/2003, A. de Bernis : updated polish translation
+            A. de Bernis : address parameter of AutoLevel is no more mandatory
+
+17/05/2003, A. de Bernis : added repetition of directive in config file
+                           (see chat.conf-sample for instructions)
+
+===   Chat Everywhere 0.0.16a released ====================
+
+16/05/2003, A. de Bernis : added users list file with UsersFile directive
+
+15/05/2003, A. de Bernis : added '[' ']' and '-' as valid nick characters
+
+13/05/2003, A. de Bernis : MacOS X (Darwin) is now supported
+            A. de Bernis : Upgraded the autoconf package and the scripts
+
+25/04/2003, A. de Bernis : server now uses non-blocking I/O
+                           with an individual receiving buffer per client.
+
+24/04/2003, A. de Bernis : added join/quit/action log to talk log
+
+18/02/2003, A. de Bernis : fixed compilation on Free-BSD
+
+===   Chat Everywhere 0.0.15a released ====================
+
+16/02/2003, A. de Bernis : found the server "crash on quit" bug that I have
+                           chasing for a week !!! Corrected.
+
+13/02/2003, A. de Bernis : bad handling of stats would crash the server
+            A. de Bernis : again, unchecked stats access in user_deconnect...
+
+01/02/2003, A. de Bernis : sigpipe are now handled (would crash the server)
+
+31/01/2003, A. de Bernis : corrected a bug in the USERS line sent by the server
+
+29/01/2003, A. de Bernis : added the PasswordFile directive to chat.conf.sample
+            A. de Bernis : corrected a pointer bug in ignore/unignore
+            A. de Bernis : send the motd before login is marked complete to
+                           avoid a "ping timeout race"
+
+07/01/2003, A. de Bernis : added a FAQ to the documentation (in progress)
+
+25/12/2002, A. de Bernis : update some documentation
+            A. de Bernis : code review for the new changes
+
+21/12/2002, A. de Bernis : added preliminary password authentication in the server
+            A. de Bernis : added chat.passwords file
+            A. de Bernis : huge changes in the way clients are handled
+            A. de Bernis : general command code review (30'000 ft above Atlantic!)
+
+20/12/2002, A. de Bernis : added md5.c and md5_hash_string for password auth
+
+19/12/2002, A. de Bernis : corrected a bug that could make chat_server crash
+                           when a client quit
+            A. de Bernis : moved some code from chat_server.c to users.c
+
+18/12/2002, A. de Bernis : updated the french translation
+            A. de Bernis : corrected some typos in translations
+
+15/12/2002, A. de Bernis : added the PidFile directive to store the pid
+            A. de Bernis : corrected a bit the autoconf files
+
+13/12/2002, A. de Bernis : better installation report
+
+
+===   Chat Everywhere 0.0.14a released ====================
+
+11/12/2002, A. de Bernis : added ping timeout support
+            A. de Bernis : added PingTimeout config directive
+            A. de Bernis : updated doc and protocol info
+            A. de Bernis : added lag in user statistics
+
+21/10/2002, A. de Bernis : corrected a typo in setlevel help
+            A. de Bernis : added client ip in usersinfo
+            A. de Bernis : corrected server usage (no '=')
+
+
+===   Chat Everywhere 0.0.13a released ====================
+
+19/10/2002, A. de Bernis : documentation updated
+
+16/10/2002, A. de Bernis : corrected a SIGSEGV in re-reading configuration file
+
+15/10/2002, A. de Bernis : added server support for pre-login command (USERS)
+            A. de Bernis : updated French translation
+
+14/10/2002, A. de Bernis : corrected a bug in the user stats (time
+                           spent on chat was incorrect if the user was not
+                           logged).
+
+04/10/2002, A. de Bernis : some more configure/Makefile changes
+            A. de Bernis : log client ip when login fails
+
+03/10/2002, A. de Bernis : Now compiles on SunOS with included make !
+            A. de Bernis : configure.in cleanup
+
+28/09/2002, A. de Bernis : moved command treat_command to commands.c
+            A. de Bernis : added new action command (/me txt)
+            A. de Bernis : moved comm functions (send_generic_*) to
+                           new module communication.c
+
+27/09/2002, A. de Bernis : splitted the clients and server ChangeLog
+
+26/09/2002, A. de Bernis : corrected the java source to reflect JDK api changes
+
+16/09/2002, A. de Bernis : re-added fork() to TALK command for performance
+            A. de Bernis : updated the CVS repository
+
+13/08/2002, A. de Bernis : added the es.po translation file (thx to
+                           Dario Rapisardi for it!)
+            A. de Bernis : updated the .po files to reflect some mods
+
+04/06/2002, A. de Bernis : corrected the included gettext compilation error
+                           (thanks to Milan Slíva for the bug report)
+            A. de Bernis : added the Czech language translation
+                           (thanks again to Milan Slíva!)
+
+02/06/2002, A. de Bernis : corrected the "setlevel -1" bug
+
+30/05/2002, A. de Bernis : added one-to-one private chat support
+            A. de Bernis : new default color set
+            A. de Bernis : corrected the infamous scroll bug...
+            A. de Bernis : added .jar archive for performance
+            A. de Bernis : added new message notification in private chat
+            A. de Bernis : msg in popup now use separate window
+
+
+===   Chat Everywhere 0.0.12a released ====================
+
+29/05/2002, A. de Bernis : added the current level in user stats
+            A. de Bernis : added a better font selection in client
+            A. de Bernis : corrected help display
+            A. de Bernis : handle better "savage" quit
+            A. de Bernis : added popup menu on user list in client
+
+28/05/2002, A. de Bernis : added STATS command
+            A. de Bernis : added new directive UserStatsMinLevel
+            A. de Bernis : added new directive ServerStatsMinLevel
+            A. de Bernis : updated the online help and the doc
+            A. de Bernis : upsized to 12 the max length of a nick
+            A. de Bernis : display a private message to the sender too
+            A. de Bernis : splitted the huge commands.c file
+            A. de Bernis : reviewed the code of all the commands
+            A. de Bernis : added QUIT command
+
+
+===   Chat Everywhere 0.0.11a released ====================
+
+27/05/2002, A. de Bernis : updated language files (fr, pl)
+            A. de Bernis : updated the .class files for the client applet
+            A. de Bernis : some bug fixes
+
+22/05/2002, A. de Bernis : updated language files
+            A. de Bernis : defined better behavior if config file does not exist
+            A. de Bernis : added generic parameters to configure
+            A. de Bernis : lot of modifications on the Java applet
+
+04/02/2002, A. de Bernis : should now compile fine on FreeBSD
+            A. de Bernis : corrected i18n implementation
+		
+
+===   Chat Everywhere 0.0.10a released ====================
+
+31/01/2002, A. de Bernis : cleaned up the code for release
+            A. de Bernis : corrected a bug in getoptlong use
+
+26/08/2001, A. de Bernis : added the Nick parameter to the java client
+            A. de Bernis : added the BackgroundColor parameter to the applet
+
+
+===   Chat Everywhere 0.0.9a released =====================
+
+24/04/2001, A. de Bernis : updated a litle bit the java client
+
+23/04/2001, A. de Bernis : added the install section to make
+            A. de Bernis : renamed chat_everywhere.8 to chat_server.8
+
+22/04/2001, A. de Bernis : updated the INSTALL doc and the man page
+            A. de Bernis : added the GPL license in the doc/COPYING file
+            A. de Bernis : "auticonfiscated" chat_server ! 
+            A. de Bernis : separated in multiple packages (server and clients)
+
+20/04/2001, A. de Bernis : added timestamps in talk logs
+            A. de Bernis : added the THANKS file
+            A. de Bernis : updated the protocol doc file
+
+
+===   First public release (0.0.8a) (incomplete) ====
+
+19/04/2001, A. de Bernis : created the SourceForge project
+            A. de Bernis : imported the project on cvs (SourceForge)
+
+18/04/2001, A. de Bernis : added the LogTalk directive (docs updated)
+            A. de Bernis : corrected the global first_config definition
+
+17/04/2001, A. de Bernis : added get_escape_table (chat_server.c)
+            A. de Bernis : added cut_last_char and itoa (str_utils.c)
+            A. de Bernis : updated doc for escape sequences support
+            A. de Bernis : added AdminEmail directive
+            A. de Bernis : updated doc for AdminEmail
+            A. de Bernis : added the MotdFile directive (docs updated)
+            A. de Bernis : added free_escape_table (chat_server.c)
+            A. de Bernis : provided net_utils.c with some resolve functions
+
+16/04/2001, A. de Bernis : added some extended memory allocation functions
+                           (emalloc, erealloc, efree and estrdup) to check
+                           memory comsuptions (mem_utils.c)
+            A. de Bernis : added a new function str_replace_escapes
+
+15/04/2001, A. de Bernis : improved the read_line function
+
+29/10/2000, A. de Bernis : added the chat_everywhere(8) man page
+
+22/09/2000, A. de Bernis : corrected a bug DoS problem while connecting,
+                           by adding multithreading and inter process
+                           communication with pipe. (pff...)
+
+20/09/2000, A. de Bernis : added SIGTERM handler and log of uptime
+            A. de Bernis : added the /seen command
+            A. de Bernis : corrected the /usersinfo display to be nicer			
+
+19/09/2000, A. de Bernis : finished the implementation of statistics
+
+18/09/2000, A. de Bernis : added statistics.c (statistics interface)
+            A. de Bernis : added Statistics directive
+            A. de Bernis : started to implement statistics
+
+12/09/2000, A. de Bernis : moved net code to net_utils.c
+            A. de Bernis : corrected the config code to accept empty directives
+            A. de Bernis : added AutoLevel directive
+            A. de Bernis : added ReserveNick directive
+            A. de Bernis : added multiline directive support in config file
+            A. de Bernis : added MaxUserConnections directive
+
+08/08/2000, A. de Bernis : corrected a bug in the /msg command
+            A. de Bernis : added BeepOnLogin directive
+
+06/06/2000, A. de Bernis : corrected some code to compile on other Linux
+
+05/08/2000, A. de Bernis : finished ip-filtering
+            A. de Bernis : added ListenIP directive (idea of Renaud Deraison)
+            A. de Bernis : added /msg to level support
+
+04/08/2000, A. de Bernis : started ip filtering (AllowIP, DenyIP, Order)
+
+31/07/2000, A. de Bernis : redistributed the code over the modules
+            A. de Bernis : added MaxUsers directive
+            A. de Bernis : added UsersInfoMinLevel directive
+            A. de Bernis : modified config-parser and config-file syntax
+
+11/07/2000, A. de Bernis : added HELP command
+            A. de Bernis : better error handling while connecting
+            A. de Bernis : corrected a big bug in user_deconnect
+            A. de Bernis : added a 'background' option
+            A. de Bernis : cleaned-up again
+
+10/07/2000, A. de Bernis : finished login support
+            A. de Bernis : added nick verification
+            A. de Bernis : cleaned-up the code a little
+            A. de Bernis : added getopt support
+
+08/07/2000, A. de Bernis : added logging support
+
+07/07/2000, A. de Bernis : added config file support

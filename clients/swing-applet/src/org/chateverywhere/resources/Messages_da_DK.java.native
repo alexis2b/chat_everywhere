@@ -1,0 +1,12 @@
+/* da_DK property file for Chat Everywhere
+ * Copyright (c) 2003-2005, A. de Bernis <alexis@bernis.org>
+ */
+
+package org.chateverywhere.resources;
+
+
+public class Messages_da_DK extends Messages_da {
+
+	/* This class has exactly the same content as Messages_da */
+
+}
